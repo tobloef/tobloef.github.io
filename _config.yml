@@ -9,6 +9,7 @@ url:                  "http://tobloef.com"
 excerpt_separator:    <!--more-->
 timezone:             Europe/Copenhagen
 disqus-id:            tobloef
+google_analytics:     "UA-73558830-1"
 
 # Assets
 sass:
