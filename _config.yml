@@ -5,7 +5,7 @@ permalink:            /:categories/:title
 title:                Tobias Løfgren's Blog
 paginate:             10
 baseurl:              ""
-url:                  "https://tobloef.com"
+url:                  "http://tobloef.com"
 excerpt_separator:    <!--more-->
 timezone:             Europe/Copenhagen
 disqus-id:            tobloef
