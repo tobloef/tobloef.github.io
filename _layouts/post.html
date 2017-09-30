@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="post">
+  <div class="post-info">
+    <span>Written by&nbsp;</span>{{ page.author }}
+
+    {% if page.date %}
+      <br>
+      <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
+    {% endif %}
+  </div>
+
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-line"></div>
+
+  {{ content }}
+
+</div>
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = "{{ page.url }}";
+        this.page.identifier = "tobloef";
+    };
+    (function() {
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://tobloef.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+{% endif %}

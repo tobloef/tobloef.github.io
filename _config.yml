@@ -1,0 +1,41 @@
+# Permalinks
+permalink:            /:categories/:title
+
+# Setup
+title:                Tobias Løfgren's Blog
+paginate:             10
+baseurl:              ""
+url:                  "https://tobloef.com"
+excerpt_separator:    <!--more-->
+timezone:             Europe/Copenhagen
+disqus-id:            tobloef
+
+# Assets
+sass:
+  sass_dir:           _sass
+  style:              :compressed
+
+# Build settings
+markdown:             kramdown
+strict_front_matter:  true
+
+# Defaults
+defaults:
+  -
+    scope:
+      type:           "posts"
+    values:
+      baseurl:        "blog"
+      comments:        true
+      author:         "Tobias Løfgren"
+
+# About
+author:
+  name:               Tobias Løfgren
+  url:                http://tobloef.com
+  email:              tobloef@gmail.com
+  github:             https://github.com/tobloef
+
+# Gems
+gems:
+  - jekyll-paginate
