@@ -10,8 +10,9 @@
           <h2 class="nav-title">{{ site.title }}</h2>
         </a>
         <ul>
-          <li><a href="{{ '/about' | prepend: site.url }}">About</a></li>
+          <li><a href="{{ site.url }}/about">About</a></li>
           <li><a href="{{ site.baseurl }}/">Posts</a></li>
+          <li><a href="{{ site.author.github }}">GitHub</a></li>
         </ul>
     </div>
   </nav>
