@@ -5,10 +5,10 @@ permalink:            /:categories/:title
 title:                Tobias Løfgren's Blog
 paginate:             10
 baseurl:              ""
-url:                  "http://tobloef.com"
+url:                  "https://tobloef.com"
 excerpt_separator:    <!--more-->
 timezone:             Europe/Copenhagen
-disqus-id:            tobloef
+disqus_shortname:     "tobloef"
 google_analytics:     "UA-73558830-1"
 
 # Assets
@@ -37,6 +37,6 @@ author:
   email:              tobloef@gmail.com
   github:             https://github.com/tobloef
 
-# Gems
-gems:
+# Plugins
+plugins:
   - jekyll-paginate
