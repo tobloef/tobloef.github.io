@@ -39,6 +39,14 @@ a {
   text-decoration: none;
 }
 
+.fake-link {
+  color: $blue;
+}
+
+.fake-link:hover {
+  text-decoration: underline;
+}
+
 blockquote {
   border-left: .25rem solid $grey-2;
   color: $grey-1;
