@@ -26,7 +26,7 @@ defaults:
     scope:
       type:           "posts"
     values:
-      baseurl:        "blog"
+      #permalink:       /blog/:categories/:title
       comments:        true
       author:         "Tobias Løfgren"
 
@@ -40,3 +40,4 @@ author:
 # Plugins
 plugins:
   - jekyll-paginate
+  - jekyll-sitemap
