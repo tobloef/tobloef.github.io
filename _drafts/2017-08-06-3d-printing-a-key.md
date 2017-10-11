@@ -19,4 +19,6 @@ category: "security"
 
 ![Measuring the key](/assets/3d-printing-a-key/measuring-the-key.jpg)
 
+//TODO: Introduction
+
 <!--more-->
