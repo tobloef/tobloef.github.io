@@ -64,10 +64,21 @@ blockquote {
 
 img {
   display: block;
-  margin: 0 0 1rem;
+  margin: 0 auto;
   max-width: 100%;
 }
 
-td {
-  vertical-align: top;
+.post > table {
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+}
+
+
+.post > table td {
+  padding: 3px 5px;
+  min-width: 30px;
+}
+
+.post > table, .post > table th, .post > table td {
+  border: 1px solid black;
 }
