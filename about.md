@@ -4,6 +4,8 @@ title: "About"
 permalink: /about
 ---
 
-Hi, I'm Tobias Løfgren, a 19-year-old software developer from Denmark. When I'm not going to school or working as a freelance software developer, I like to tinker with all sorts of fun side projects. It's mostly programming related, but I also sometimes do CTFs and other security related things. This site is still in its early stages but I plan to use it as a place to host my personal blog and portfolio.
+Hello I'm Tobias, a freelance developer from Denmark. When I'm not studying computer science or working as a .NET developer, I tinker with all sorts of fun side projects, some of which I write about on this site. Right now I'm really interested in security and doing CTF writeups, but I also do a lot of full-stack web development. Next year I really look forward to diving into AI and machine learning.
+
+Feel free to follow me on twitter [@tobloef](https://www.twitter.com/tobloef).
 
 You can contact me on [tobloef@gmail.com](tobloef@gmail.com).
