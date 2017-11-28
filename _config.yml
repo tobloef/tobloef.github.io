@@ -3,6 +3,7 @@ permalink:            /:categories/:title
 
 # Setup
 title:                Tobias Løfgren's Blog
+description:          "This is the personal blog of me, Tobias Løfgren, where I write about the interesting programming projects I do."
 paginate:             10
 baseurl:              ""
 url:                  "https://tobloef.com"
