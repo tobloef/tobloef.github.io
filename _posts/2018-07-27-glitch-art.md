@@ -10,7 +10,9 @@ Recently someone I know convinced me to take part in a small amateur art exhibit
 
 **If you just want to view an album of the images from this post, [click here](https://imgur.com/a/lh6NXGN)**
 
+
 ![](/assets/glitch-art/jp2-rose.png)
+
 
 # glitch-tool – For messing files up
 
@@ -24,59 +26,115 @@ Since different image formats encode data in different ways, making changes to a
 
 ## PNG
 PNG files break very easily and very noticeably. I found messing with PNGs to yield two kinds of effects. The first is a black and white nosiness, with small coloured segments strewn in.
+
+
 ![](/assets/glitch-art/png-noise-mermaid.png)
+
+
 ![](/assets/glitch-art/png-noise-rose.png)
+
+
 The other kind of effect is patches of vibrantly coloured squares, sometimes many interwoven ones. The more details an area of the image has, the more detailed the coloured patches will be. On a simple background, this effect can create stuff like simple coloured lines, and on more visually complex images, you’ll get a much more corrupted looking effect.
+
+
 ![](/assets/glitch-art/png-corruption-viking.png)
+
+
 ![](/assets/glitch-art/png-corruption-mermaid.png)
+
 
 ## JPG (and variants)
 Making just a single small change to a JPG file won’t do much, you’ll probably only see a slight discolouration somewhere in the image. To create interesting effects with JPGs, you either have to do many changes or bigger changes. I’ve found that moving around big chunks of the data is a good way to do this. The effects will usually be to both the image’s structure, where parts of the image gets shifted around, and the colour, where said parts also shift in their hue. On rare occasion, the image will almost look like it’s been highly compressed. 
+
+
 ![](/assets/glitch-art/jpg-colors-car.png)
+
+
 ![](/assets/glitch-art/jpg-compression-balloon.png)
+
 
 ### JPG Variations
 Variations of the JPG format, like JPM, JP2 and JXR also each yield different effects. The effects mostly revolve around strange patterns, ranging from slightly opaque overlays, to abstract vibrant patterns completely covering the image. The first image in this post, one of my absolute favourites, was also created with a JP2 file.
+
+
 ![](/assets/glitch-art/jp2-patterns-mermaid.png)
+
+
 ![](/assets/glitch-art/jp2-strong -pattern.png)
+
 
 ## GIF
 When I’m talking about GIFs here, I’m not talking about the animated ones, just images converted to the GIF format (although I might revisit animated GIFs later). With GIFS, you’ll almost always see parts of the image shifted to either the left or the right, but unlike other similar effects, shifted parts will be connected to each other, creating an analog-looking effect.
+
+
 ![](/assets/glitch-art/gif-shifted.png)
+
 
 ## FLIF
 You may not have heard of FLIF, I certainly hadn’t until very recently. [The Free Lossless Image Format](https://flif.info/) (FLIF), is a new image format with a very high compression, which is great for us since high compression rates usually lead to interesting effects. Messing with a FLIF file, will often result in patterns of weird criss-crossing lines that vary greatly in glitchyness, ranging from cracked oil-panting to colourful grid-like patterns.
+
+
 ![](/assets/glitch-art/flif-viking.png)
+
+
 The awesome artist [Sabato Visconti](http://www.sabatobox.com/) also created some [interesting pieces](http://www.sabatobox.com/flif-databending-glitch-studies) using this file format.
 
 ## WEBP
 The [WebP format](https://en.wikipedia.org/wiki/WebP) is another new image format with a very high compression rate. Unlike most of the other formats, WebP breaks in very predictable ways, always creating these blurry streaks of colour, that can sometimes make it look like the image is flowing off the screen. You can use this to your advantage, by picking source images that will fit this effect well. Since the effect always flows down and to the right, you can rotate and mirror the source images before glitching it, to control the flow of the effect.
+
+
 ![](/assets/glitch-art/webp-peacock.png)
+
+
 ![](/assets/glitch-art/webp-car.png)
+
+
 ![](/assets/glitch-art/webp-liberty.png)
+
 
 ## PSD
 Glitches created with PSD files usually change around the position of parts of each colour channel. By varying the size of the data chunks you change, you can change the size of the moved segments.
+
+
 ![](/assets/glitch-art/psd-lines.png)
+
+
 ![](/assets/glitch-art/psd-channels.png)
+
 
 # PCX
 PCX files can create a effects similar to the GIF format, where segments of the image is shifted to one side or another, sometimes with changes to the colour.
+
+
 ![](/assets/glitch-art/pcx-plant.png)
+
 
 ## TGA
 Messing with TGA files only seemed to create one kind of effect, a bit similar to some of the effects I’ve previously mentioned, where segments of the images gets shifted to the side. Unless you choose a source image with a fitting motif, the effect can be a bit boring on its own. You can also combine it with other effects for great results.
+
+
 ![](/assets/glitch-art/tga-balloon.png)
+
 
 ## TIF
 TIF is another one of those formats that vary from version to version. I found two types of effects, an almost VHS-looking horizontal noise, and some thicker slightly transparent coloured lines.
+
+
 ![](/assets/glitch-art/tif-plant.png)
+
+
 ![](/assets/glitch-art/tif-car.png)
+
 
 ## BMP
 The last image format I’m going to mention, is the BMP format. Since this is just a simple bitmap, the effects won’t be very surprising. But using some of the additional modes from [glitch-tool](https://github.com/tobloef/glitch-tool), such as `reverse` or `move`, you can still create some decent results, especially if you choose a fitting motif or combine it with other effects, like I’ve done in the second picture below.
+
+
 ![](/assets/glitch-art/bmp-self.png)
+
+
 ![](/assets/glitch-art/bmp-jpg-self.png)
+
 
 # Other tips
 Before I conclude this post, I have a final few short tips:
