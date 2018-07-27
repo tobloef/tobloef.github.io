@@ -10,7 +10,7 @@ Recently someone I know convinced me to take part in a small amateur art exhibit
 
 <!--more-->
 
-**If you just want to view an album of the images from this post, [click here]()**
+**If you just want to view an album of the images from this post, [click here](https://imgur.com/a/lh6NXGN)**
 
 ![](/assets/glitch-art/jp2-rose.png)
 
