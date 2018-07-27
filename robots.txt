@@ -1,4 +1,4 @@
-Sitemap: https://tobloef.com/sitemap.xml
-
-User-agent: Browsershots
+User-agent: *
 Disallow:
+
+Sitemap: https://tobloef.com/sitemap.xml
