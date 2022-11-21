@@ -4,7 +4,7 @@ title: "About"
 permalink: /about
 ---
 
-Hi, I'm Tobias Løfgren, a passionate software engineer from Denmark. By day I work as full stack engineer at [ClearVoyage](https://clearvoyage.com/) and by night I tinker with all sorts of fun side projects, some of which I write about on this site. 
+Hi, I'm Tobias Løfgren, a passionate software engineer from Denmark. By day I work as full stack engineer at [LEGO]([https://clearvoyage.com/](https://www.lego.com/)) and by night I tinker with all sorts of fun side projects, some of which I write about on this site. 
 
 Feel free to follow me on twitter [@tobloef](https://www.twitter.com/tobloef).
 
