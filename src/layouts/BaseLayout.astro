@@ -8,7 +8,9 @@
 		<title>Tobias Løfgren</title>
 	</head>
 	<body>
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 
@@ -43,6 +45,11 @@
 
 		background: var(--background);
 		color: var(--text);
+	}
+
+	main {
+		margin: 0 auto;
+		padding: 0 2em;
 	}
 
 	a {

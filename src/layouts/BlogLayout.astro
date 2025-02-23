@@ -1,17 +1,17 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import BackHome from "../components/BackHome.astro";
 ---
 
 <BaseLayout>
-  <main>
-	  <slot />
-	</main>
+	<nav>
+		<BackHome />
+	</nav>
+	<slot />
 </BaseLayout>
 
 <style>
-  main {
-    max-width: 80ch;
-    margin: 0 auto;
-    padding: 2em;
-  }
+	nav {
+		margin-top: 2em;
+	}
 </style>

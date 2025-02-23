@@ -1,25 +1,8 @@
 ---
-import type { MarkdownInstance } from "astro";
 import Blog from '../../layouts/BlogLayout.astro';
-
-type Frontmatter = {
-  title: string;
-};
-
-const posts = Object.values(
-  import.meta.glob<MarkdownInstance<Frontmatter>>(
-    './*/*.{md,mdx}',
-    { eager: true }
-  )
-);
 ---
 
 <Blog>
   <h1>Hello, Astro!</h1>
-  <p>Realtime Colors was created <a href="">over a weekend by @Juxtopposed</a> and the first version was released on <a href="">CodePen</a>. Since then, lots of recommendations and suggestions were implemented thanks to the amazing community and their continuous support. If you'd like to contribute as well, check out <a href="">Contributions</a>.</p>
-
-	<p>Post Archive:</p>
-	<ul>
-    {posts.map(post => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-	</ul>
+  <p>This is a text with <a href="">some links as well</a> that I added to test out the <a href="">style</a>. You could write a lot more about it, and indeed I will, because it's so interesting. Except the fact that the previous sentence was a lie, I'm just rambling to fill <a href="">space</a>.</p>
 </Blog>
