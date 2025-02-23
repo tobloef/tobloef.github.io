@@ -1,0 +1,17 @@
+---
+import Global from './Global.astro';
+---
+
+<Global>
+  <main>
+	  <slot />
+	</main>
+</Global>
+
+<style>
+  main {
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 2em;
+  }
+</style>
