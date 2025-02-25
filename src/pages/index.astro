@@ -1,9 +1,11 @@
 ---
 import type { MarkdownInstance } from "astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate } from "../scripts/date";
 
 type Frontmatter = {
   title: string;
+	pubDate: Date;
 };
 
 const posts = Object.values(
@@ -19,8 +21,17 @@ const posts = Object.values(
 
 	<p>Post Archive:</p>
 	<ul>
-    {posts.map((post) => (
-			<li><a href={post.url}>{post.frontmatter.title}</a></li>
-    ))}
+    {
+			posts
+			.toSorted((a, b) => (
+				a.frontmatter.pubDate > b.frontmatter.pubDate ? -1 : 1
+			))
+			.map((post) => (
+				<li>
+					<a href={post.url}>{post.frontmatter.title}</a>
+					({formatDate({ date: post.frontmatter.pubDate })})
+				</li>
+    	))
+		}
 	</ul>
 </BaseLayout>

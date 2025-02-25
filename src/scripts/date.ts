@@ -22,20 +22,27 @@ const ORDINAL_SUFFIXES = {
   "other": "th"
 };
 
-export function formatDate(date: Date | string): string {
+export function formatDate(props: {
+  date: Date | string,
+  includeDay?: boolean
+}): string {
+  let { date, includeDay = false } = props;
+
   if (typeof date === "string") {
     date = new Date(date);
   }
 
   const parts = DATE_TIME_FORMAT.formatToParts(date);
 
-  const day = parts.find((part) => part.type === "day")!.value;
+  const rawDay = parts.find((part) => part.type === "day")!.value;
   const month = parts.find((part) => part.type === "month")!.value;
   const year = parts.find((part) => part.type === "year")!.value;
 
-  const ordinal = ORDINAL_PLURAL_RULES.select(Number(day));
+  const ordinal = ORDINAL_PLURAL_RULES.select(Number(rawDay));
   const ordinalSuffix = ORDINAL_SUFFIXES[ordinal];
 
-  return `${day}${ordinalSuffix} ${month} ${year}`;
+  const day = `${rawDay}${ordinalSuffix}`;
+
+  return `${month} ${includeDay ? `${day} ` : ""}${year}`;
 }
 
