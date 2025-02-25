@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { MarkdownInstance } from "astro";
+
+type Frontmatter = {
+  title: string;
+  aliases?: string[];
+};
+
+export async function getStaticPaths() {
+  const posts = Object.values(
+    import.meta.glob<MarkdownInstance<Frontmatter>>(
+      './blog/*/*.{md,mdx}',
+      { eager: true }
+    )
+  );
+
+  const aliases = new Map();
+
+  for (const entry of posts) {
+    for (const alias of entry.frontmatter.aliases ?? []) {
+      aliases.set(alias.replace(/^\//, ""), entry);
+    }
+  }
+
+  return Array.from(
+    aliases.entries(),
+    ([alias, entry]) => ({
+      params: { alias },
+      props: {
+        title: entry.frontmatter.title,
+        dest: entry.url,
+      }
+    })
+  );
+}
+
+
+const { dest, title } = Astro.props;
+const replacement = `${Astro.url.origin}${dest}`;
+---
+
+<BaseLayout title={title}>
+	<Fragment slot="head">
+		<meta name="robots" content="noindex">
+		<meta
+      http-equiv="refresh"
+      content={`5; url=${replacement}`}
+    >
+	</Fragment>
+
+	<p>This page has permanently moved. The new URL is:</p>
+
+	<p><a href={replacement}>{replacement}</a></p>
+
+	<p>You should be automatically redirected in a few seconds...</p>
+</BaseLayout>
