@@ -52,11 +52,14 @@
 		margin: 0 auto;
 		padding: 0 2em 2em 2em;
 		max-width: 80ch;
+		display: flex;
+		flex-direction: column;
 	}
 
 	img {
 		max-width: 100%;
 		height: auto;
+		align-self: center;
 	}
 
 	a {
@@ -93,5 +96,9 @@
 		color: var(--background);
 		padding: 0 1em;
 		border-radius: 2px;
+	}
+
+	h2 + p {
+		margin-top: 0;
 	}
 </style>
