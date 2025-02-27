@@ -2,6 +2,7 @@
 title: 'CyberCamp Individual CTF Quals 2017 Writeup'
 pubDate: 2017-10-07
 layout: '../../../layouts/BlogLayout.astro'
+aliases: ["/ctf/cybercamp-ctf-2017"]
 ---
 
 This weekend I had a bit of time to participate in the [CyberCamp Individual CTF Quals](https://cybercamp.es/en/competitions/individual_ctf). The CTF was open the entire week, but you only had 8 hours to complete as many challenges as you could once you started the challenge. This is my writeup of the challenges I solved.

@@ -2,6 +2,7 @@
 title: 'Glitch Art - Adventures in databending'
 pubDate: 2018-07-27
 layout: '../../../layouts/BlogLayout.astro'
+aliases: ["/fun/glitch-art"]
 ---
 
 Recently someone I know convinced me to take part in a small amateur art exhibition, and since I don’t have any conventional artistic abilities, I thought it would be a good time to explore a topic I’ve been interested in for a while: [Glitch Art](https://en.wikipedia.org/wiki/Glitch_art), specifically what’s known as [databending](https://en.wikipedia.org/wiki/Databending). In this post I’ll introduce a tool I made to help do databending, talk about some of the tips and techniques that I learned along the way and share some of my favourite results.

@@ -2,6 +2,7 @@
 title: 'STEM CTF 2017 Writeup'
 pubDate: 2017-10-07
 layout: '../../../layouts/BlogLayout.astro'
+aliases: ["/ctf/mitre-ctf-2017"]
 ---
 
 A couple of weeks ago I participated in the 24-hour 2017 MITRE STEM Cyber Challenge CTF, and now I've finally gotten around to setting up this blog and doing a writeup for the challenges I solved. Overall me and my teammate managed to get 1150 points, placing us at a shared 5th on the scoreboard.
