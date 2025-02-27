@@ -1,0 +1,43 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BackHome from "../components/BackHome.astro";
+import { formatDate } from "../scripts/date";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+	<nav>
+		<BackHome />
+	</nav>
+	<h1>{frontmatter.title}</h1>
+	<p class="sub-title de-emphasize">{frontmatter.subTitle}</p>
+	<slot />
+	<p class="publication-date de-emphasize">
+		Published on: {formatDate({
+		date: frontmatter.pubDate,
+		includeDay: true
+	})}
+	</p>
+</BaseLayout>
+
+<style>
+	nav {
+		margin-top: 2em;
+	}
+
+	h1 {
+		margin-bottom: 0;
+		margin-top: 1em;
+	}
+
+	.sub-title {
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
+
+	.publication-date {
+		margin-top: 2em;
+		margin-bottom: 2em;
+	}
+</style>
