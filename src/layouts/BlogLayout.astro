@@ -11,13 +11,14 @@ const { frontmatter } = Astro.props;
 		<BackHome />
 	</nav>
 	<h1>{frontmatter.title}</h1>
-	<p class="publication-date">
+	<p class="sub-title de-emphasize">{frontmatter.subTitle}</p>
+	<slot />
+	<p class="publication-date de-emphasize">
 		Published on: {formatDate({
 		date: frontmatter.pubDate,
 		includeDay: true
 	})}
 	</p>
-	<slot />
 </BaseLayout>
 
 <style>
@@ -27,11 +28,16 @@ const { frontmatter } = Astro.props;
 
 	h1 {
 		margin-bottom: 0;
+		margin-top: 1em;
+	}
+
+	.sub-title {
+		margin-top: 0;
+		margin-bottom: 1em;
 	}
 
 	.publication-date {
-		font-style: italic;
-		margin-top: 0;
+		margin-top: 2em;
 		margin-bottom: 2em;
 	}
 </style>

@@ -4,7 +4,6 @@ pubDate: 2017-10-22
 layout: '../../../layouts/BlogLayout.astro'
 ---
 
-
 This weekend me and a couple of teammates took part in the 48 hour long Pwn2Win CTF 2017. It was a pretty challenging CTF, especially since there weren't a lot of challenges in the categories I usually do, but in the end we managed to place 10th on the scoreboard.
 
 ## Regex Baby

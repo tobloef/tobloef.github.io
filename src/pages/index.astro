@@ -5,6 +5,7 @@ import { formatDate } from "../scripts/date";
 
 type Frontmatter = {
   title: string;
+	subTitle?: string;
 	pubDate: Date;
 };
 
@@ -26,7 +27,14 @@ const byPubDate = (
 <BaseLayout>
   <h1>Tobias Løfgren</h1>
 
-	<p>Post Archive:</p>
+	<p>
+		Hi there, thanks for stopping by! By day I work as a Software Engineer for <a href="https://www.lego.com/">The LEGO Group</a> in Denmark and by night I work on fun side projects, some of which I write about here.
+	</p>
+	<p>
+		Feel free to check out my stuff on <a href="https://github.com/tobloef">GitHub</a> or <a href="https://bsky.app/profile/tobloef.bsky.social">Bluesky<a/>, or reach out directly to <a href="mailto:tobloef@gmail.com">tobloef@gmail.com</a>.
+	</p>
+
+	<h2>Blog Posts</h2>
 	<ul>
     {
 			posts
@@ -34,7 +42,11 @@ const byPubDate = (
 			.map((post) => (
 				<li>
 					<a href={post.url}>{post.frontmatter.title}</a>
-					({formatDate({ date: post.frontmatter.pubDate })})
+					<span class="de-emphasize">
+						({formatDate({
+							date: post.frontmatter.pubDate
+						})})
+					</span>
 				</li>
     	))
 		}
