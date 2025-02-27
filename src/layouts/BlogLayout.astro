@@ -7,6 +7,10 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout>
+	<Fragment slot="head">
+		<title>{frontmatter.title} // Tobias Løfgren</title>
+		{frontmatter.subTitle && <meta name="description" content={frontmatter.subTitle}>}
+	</Fragment>
 	<nav>
 		<BackHome />
 	</nav>
