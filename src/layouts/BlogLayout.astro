@@ -14,7 +14,7 @@ const { frontmatter } = Astro.props;
 	</Fragment>
 	<nav>
 		<BackHome />
-		<ThemeSwitcher client:load />
+		<ThemeSwitcher />
 	</nav>
 	<h1>{frontmatter.title}</h1>
 	<p class="sub-title de-emphasize">{frontmatter.subTitle}</p>
