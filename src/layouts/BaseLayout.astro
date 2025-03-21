@@ -18,20 +18,32 @@
 
 <style is:global>
 	:root {
-		--text: hsl(43, 26%, 11%);
-		--background: hsl(36, 49%, 83%);
-		--primary: hsl(31, 100%, 26%);
-		--secondary: hsl(32, 100%, 17%);
-		--accent: hsl(38, 100%, 45%);
+		--light-text: hsl(43, 26%, 11%);
+		--light-background: hsl(36, 49%, 83%);
+		--light-primary: hsl(31, 100%, 26%);
+		--light-secondary: hsl(32, 100%, 17%);
+		--light-accent: hsl(38, 100%, 45%);
+
+		--dark-text: hsl(36, 49%, 83%);
+		--dark-background: hsl(30, 6%, 7%);
+		--dark-primary: hsl(31, 100%, 74%);
+		--dark-secondary: hsl(32, 100%, 83%);
+		--dark-accent: hsl(38, 100%, 45%);
+
+		--text: var(--light-text);
+		--background: var(--light-background);
+		--primary: var(--light-primary);
+		--secondary: var(--light-secondary);
+		--accent: var(--light-accent);
 	}
 
 	@media (prefers-color-scheme: dark) {
 		:root {
-			--text: hsl(36, 49%, 83%);
-			--background: hsl(30, 6%, 7%);
-			--primary: hsl(31, 100%, 74%);
-			--secondary: hsl(32, 100%, 83%);
-			--accent: hsl(38, 100%, 45%);
+			--text: var(--dark-text);
+			--background: var(--dark-background);
+			--primary: var(--dark-primary);
+			--secondary: var(--dark-secondary);
+			--accent: var(--dark-accent);
 		}
 	}
 

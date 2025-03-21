@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import BackHome from "../components/BackHome.astro";
 import { formatDate } from "../scripts/date";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -13,6 +14,7 @@ const { frontmatter } = Astro.props;
 	</Fragment>
 	<nav>
 		<BackHome />
+		<ThemeSwitcher client:load />
 	</nav>
 	<h1>{frontmatter.title}</h1>
 	<p class="sub-title de-emphasize">{frontmatter.subTitle}</p>
@@ -27,6 +29,10 @@ const { frontmatter } = Astro.props;
 
 <style>
 	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		margin-top: 2em;
 	}
 

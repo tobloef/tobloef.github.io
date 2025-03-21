@@ -2,6 +2,7 @@
 import type { MarkdownInstance } from "astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { formatDate } from "../scripts/date";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 type Frontmatter = {
   title: string;
@@ -25,7 +26,10 @@ const byPubDate = (
 ---
 
 <BaseLayout>
-  <h1>Tobias Løfgren</h1>
+  <div class="header-container">
+		<h1>Tobias Løfgren</h1>
+		<ThemeSwitcher client:load />
+	</div>
 
 	<p>
 		Hi there, thanks for stopping by! By day I work as a Software Engineer for <a href="https://www.lego.com/">The LEGO Group</a> in Denmark and by night I work on a million side projects, a few of which I write about here.
@@ -52,3 +56,12 @@ const byPubDate = (
 		}
 	</ul>
 </BaseLayout>
+
+<style>
+	.header-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+</style>
