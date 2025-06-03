@@ -23,6 +23,7 @@ const portfolioItems = await getCollection("portfolio");
 						class="thumbnail"
 						src={item.data.cover}
 						alt={item.data.title}
+						width={400}
 						style={`view-transition-name: ${ item.id }-cover-image;`}
 					/>
 					<p class="title">
