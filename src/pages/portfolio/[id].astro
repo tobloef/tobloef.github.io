@@ -1,0 +1,77 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from "astro:assets";
+import BaseLayout from "../../components/BaseLayout.astro";
+import Navigation from "../../components/Navigation.astro";
+
+export async function getStaticPaths() {
+	const portfolioItems = await getCollection('portfolio');
+	return portfolioItems.map((item) => ({
+		params: { id: item.id },
+		props: { item },
+	}));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
+	<Fragment slot="head">
+		<title>Portfolio // Tobias Løfgren</title>
+	</Fragment>
+	<Navigation
+		backUrl="/portfolio"
+		backTitle="Back to portfolio"
+	/>
+	<div class="container">
+		<Image
+			src={item.data.cover}
+			alt={item.data.title}
+			class="cover"
+			style={`view-transition-name: ${item.id}-cover-image;`}
+		/>
+		<div class="text">
+			<h1 class="title">
+				{item.data.title}
+			</h1>
+			<Content />
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+
+	.container {
+		margin-top: 2em;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.cover {
+		margin: 0 0 1em 0;
+		max-height: 30em;
+		border-radius: 5px;
+		box-shadow: 0 0 10px var(--shadow);
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .subtitle {
+    margin-top: 0;
+    opacity: 0.7;
+    font-style: italic;
+  }
+</style>

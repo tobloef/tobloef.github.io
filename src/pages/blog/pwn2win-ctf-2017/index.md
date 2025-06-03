@@ -1,7 +1,7 @@
 ---
 title: 'Pwn2Win CTF 2017 Writeup'
 pubDate: 2017-10-22
-layout: '../../../layouts/BlogLayout.astro'
+layout: '../../../components/BlogLayout.astro'
 aliases: ["/ctf/pwn2win-ctf-2017"]
 ---
 
@@ -234,7 +234,7 @@ In the `Message.txt` file linked above, we see 28 blocks of 16 rows of 1's and 0
 
 We were also given an image of drawing an electrical circuit diagram. Now, before I begin, let me just say that I'm by no means an electronics expert, so if I've made some mistake in reading the diagram, please let me know. I've cropped the original image and increased the contrast for better viewing:
 
-![Strange Circuit](./assets/circuit_cropped.jpg)
+![Strange Circuit](./_assets/circuit_cropped.jpg)
 
 **You can skip this part if you aren't interested in the diagram and just want to see the solution, since it isn't strictly necessary so solve the challenge.**
 
@@ -242,13 +242,13 @@ Let's get an overview of the parts of this diagram. In the middle we have an 8x8
 
 Each row of the LEDs' ground pins also connects to a NPN transistors, to the left in the drawing, but these this time to another pin, so they don't work as NOT gates but instead let the LED rows connect to ground of the transistor receives a voltage.
 
-![Shift register](./assets/shift_register.jpg)
+![Shift register](./_assets/shift_register.jpg)
 
 Whether each transistor receives a voltages is controlled by a shift register, that's the trapezoid on the left. I'm not going to go into too much detail, you can find a more thorough explanation in [this video](https://www.youtube.com/watch?v=6fVbJbNPrEU), but here's a brief overview. A shift register shifts bits into its memory whenever the clock pin goes to high. Whether this bit is high or low, 1 or 0, is controlled by the serial pin. Once you've shifted the desired pins into memory, you can trigger the latch pin to turn the shift registers output pins on based on what's in memory.
 
 We don't know which pin is which in the drawing, but we can probably assume that the 8 pins on the right of the shift register are the output pins, the single pin on the left is the clear pin and the three pins on the top are the clock, data and latch pin.
 
-![Flip flops](./assets/flip_flops.jpg)
+![Flip flops](./_assets/flip_flops.jpg)
 
 At the top left of the diagram we have three boxes with some inputs and outputs. These represent three JK flip flops, creating a synchronous counter. I assumed that the circle to the left was a 0, since I knew where the inputs for row 1-8 `Message.txt` were, but this turned out to be wrong. It turned out that these flip flops and the shift register weren't really important to solving the challenge, but I'll explain what these flip flops are doing anyway.
 

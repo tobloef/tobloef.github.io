@@ -1,7 +1,7 @@
 ---
 title: 'CyberCamp Individual CTF Quals 2017 Writeup'
 pubDate: 2017-10-07
-layout: '../../../layouts/BlogLayout.astro'
+layout: '../../../components/BlogLayout.astro'
 aliases: ["/ctf/cybercamp-ctf-2017"]
 ---
 
@@ -9,7 +9,7 @@ This weekend I had a bit of time to participate in the [CyberCamp Individual CTF
 
 ## It is not Caesar
 
-![Objective 1](./assets/objective1.jpg)
+![Objective 1](./_assets/objective1.jpg)
 
 In the image above we see three things of note. First of all we have the piece of ciphertext `ESNTOTGCESLDUMOHIESLF:QACAIEOS`. We also have the string `6x5` and the word `BLANCO`. Based on the challenge's title, I'm guessing that this is some kind of cipher. `6x5` seems to be dimensions for a grid and `BLANCO` could be a key. After looking a bit at different transposition ciphers I found one that looked promising, the columnar transposition cipher.
 
@@ -76,7 +76,7 @@ In this challenge we were given an image of a hard drive in form of a .aff file,
 
 I started off by mounting the .aff file on my computer with a tool called [OSFMount](https://www.osforensics.com/tools/mount-disk-images.html). I knew I probably had to take a look at the registry of the user to view his Windows Explorer search history, so I opened up the NTUSER.DAT file found in the user's home directory, with a tool called [Registry Viewer](https://www.gaijin.at/en/dlregview.php). Under `Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery` we can see one of the searches, which probably contain the flag.
 
-![Objective 2](./assets/objective2.png)
+![Objective 2](./_assets/objective2.png)
 
 **FLAG:** `El YEPA-YEPA`
 
@@ -152,7 +152,7 @@ As I usually do, I start off by opening the file in a tool called [NetworkMiner]
 
 `ip.src == 192.168.47.192`
 
-![Wireshark filtered](./assets/objective5.png)
+![Wireshark filtered](./_assets/objective5.png)
 
 We can see a bunch of ICMP packets sent from the host. Some of the packets contain parts of a error message, so it seems like some sort of exploit was used to make the host respond with an error containing the path and contents of a sensitive file. This is the data of most interesting packet:
 

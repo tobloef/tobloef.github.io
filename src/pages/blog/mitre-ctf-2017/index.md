@@ -1,7 +1,7 @@
 ---
 title: 'STEM CTF 2017 Writeup'
 pubDate: 2017-10-07
-layout: '../../../layouts/BlogLayout.astro'
+layout: '../../../components/BlogLayout.astro'
 aliases: ["/ctf/mitre-ctf-2017"]
 ---
 
@@ -16,7 +16,7 @@ Unfortunately the challenge titles and descriptions are no longer available, and
 
 In this challenge we were given a .pcap file, which I opened up in Wireshark to take a closer look at. There are just five packets in the capture, seemingly a user receiving an email. To get a better overview of what was sent, I right-clicked on a packet and choose Follow -> TCP Stream.
 
-![Wireshark showing the TCP stream](./assets/web-50-follow.png)
+![Wireshark showing the TCP stream](./_assets/web-50-follow.png)
 
 We see what seems to be a password reset email for some non-existing website. The only thing of interest is the token from the password reset url: `TUNBezU4MDc2MjY2NzZ9`. Since it's just a bogus url and we don't have other relevant packets, it's safe to assume that the flag is hidden in the token. I tried decoding it as base64, which turned out to be correct, revealing the flag. Without the base64 padding it was harder to recognize, but I was lucky and got it on first try.
 
@@ -59,7 +59,7 @@ $ binwalk -eD 'png image:png' *.vhd
 
 Now we have the extracted image file, shown below:
 
-![Extracted .png file with the flag](./assets/195E00.png)
+![Extracted .png file with the flag](./_assets/195E00.png)
 
 **Flag:** `MCA{RA1D3rs_0f_the_L0sT_bits}`
 
@@ -76,7 +76,7 @@ But if we try to just copy the flag, something is messing with our clipboard and
 ## Crypto 150
 [Click here to download the challenge .html file](/mitre-ctf-2017/crypto-150.zip)
 
-![Password prompt](./assets/crypto-150-prompt.png)
+![Password prompt](./_assets/crypto-150-prompt.png)
 
 For this challenge we were given access to a static website with a password submission form. When the correct password was entered, the flag would be revealed. Since the logic of the website is purely client-side, I went ahead and downloaded the HTML file and opened it up in my text-editor of choice. We can immediately see a bit of CSS and a big chunk of minified JavaScript, a static crypto library called StaticJS. Other than that, the rest of the file is just a few lines of JavaScript code to decrypt a secret message with a password and display it on the website. Take a look:
 
@@ -153,13 +153,13 @@ After running the script for a while, we can see that the password is ✈🍓, w
 
 In the end I didn't actually complete as many forensics challenges as I wanted, but I did complete a fair few grab bag challenges. The grab bag category is basically just a bunch of random challenges that doesn't fit any other category and they're usually pretty fun to do. In the first challenge we were provided with a little 2D platformer gamer. After running the installation script, we can see the game:
 
-![The 2D platformer for this challenge](./assets/grab-bag-150-game.png)
+![The 2D platformer for this challenge](./_assets/grab-bag-150-game.png)
 
 There are four levels in total, the first two are pretty standard platformer levels, but the third level is not just hard, it's impossible. There's a big impassable wall in the way, blocking the way to the end of the level. So, we'll cheat of course. After considering a few different approaches, I decided to see if I could edit the position of the player in the game's memory. On a Windows machine I would use Cheat Engine, but since I'm running the game on a Linux VM, I had to search for an alternative. I ended up using a tool called [scanmem](https://github.com/scanmem/scanmem) with the GameConqueror UI front-end, which is very similar to CheatEngine.
 
 After searching for the two correct memory addresses for a while, the player's x and y coordinates, I finally found them and changed them so the player would be behind the wall. This got me to the final level, which contained the flag, as seen below:
 
-![The flag is found!](./assets/grab-bag-150-flag.png)
+![The flag is found!](./_assets/grab-bag-150-flag.png)
 
 You can see the first part of the flag `MCA{M` and after jumping a bit around the level I had the entire flag.
 
