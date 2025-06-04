@@ -1,0 +1,22 @@
+---
+title: "Crockpot"
+subtitle: "Graph Component System (GCS) for web games."
+cover: "./graph.webp"
+coverAlt: "A graph of nodes and edges"
+coverIsSmall: true
+date: 2024-11-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/crockpot?tab=readme-ov-file#readme" },
+]
+---
+
+Written in TypeScript, Crockpot is essentially an in-memory graph database specifically made for game development. By structuring game logic as systems that act on a world of nodes and edges, you can achieve a high level of composability.
+
+In this regard, it fills much of the same niche as an [Entity Component System (ECS)](https://en.wikipedia.org/wiki/Entity_component_system), though admittedly without the same cache-friendly data layouts that many ECS libraries have (yet!). In comparison to an ECS though, Crockpot dispenses with the concept of an "entity" and takes an entirely graph-first approach to the same problem, which I believe makes both querying and reasoning about the data more intuitive.
+
+Crockpot features a powerful graph querying API, entirely type-safe thanks to [a mountain of TypeScript](https://github.com/tobloef/crockpot/blob/main/src/query/run-query.types.ts).
+
+The initial idea for Crockpot was heavily inspired by the articles of Sander Mertens, especially [Why it is time to start thinking of games as databases](https://ajmmertens.medium.com/why-it-is-time-to-start-thinking-of-games-as-databases-e7971da33ac3) and [Building Games in ECS with Entity Relationships](https://ajmmertens.medium.com/building-games-in-ecs-with-entity-relationships-657275ba2c6c).
+
+I have lots more to say about Crockpot, but for now I will wait until I have finished version 2.0. Keep and eye on [the blog](/) though!

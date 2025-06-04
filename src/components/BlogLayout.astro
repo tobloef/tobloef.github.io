@@ -16,10 +16,7 @@ const frontmatter = Astro.props.frontmatter ?? {};
 	<p class="subtitle de-emphasize">{frontmatter.subtitle}</p>
 	<slot />
 	<p class="publication-date de-emphasize">
-		Published on: {formatDate({
-		date: frontmatter.pubDate,
-		includeDay: true
-	})}
+		Published on: {formatDate(frontmatter.pubDate, { includeDay: true })}
 	</p>
 </BaseLayout>
 

@@ -1,0 +1,19 @@
+---
+title: "ClearVoyage VMS"
+subtitle: "Modern Voyage Management System for the maritime industry."
+cover: "./screenshot.png"
+coverAlt: "Screenshot of the ClearVoyage VMS."
+date: 2021-05-01
+groups: []
+links: [
+	{ label: "Homepage", url: "https://clearvoyage.com/" }
+]
+---
+
+Commercial software for the maritime industry, built as a React SPA with a RESTful Node.js API on the backend. Clocking in at around 130,000 lines of code when I last worked on it, it is one of the larger projects I have worked on, chuck full of highly domain-specific business logic.
+
+When I joined the project, about half a year into development, one of my primary responsibilities was setting up our CI/CD pipelines. After this I joined the core product team and later lead our migration from Javascript to TypeScript.
+
+One of the key takeaways I had from the project, was how much of a competitive advantage it was to have an engineering process as agile as we had. Especially for a startup in a technologically conservative industry like maritime, it meant that we could punch far above our weight class by delivering features and fixes at a speed that our competitors could not match. CI/CD pipelines, automated testing, and a strong focus on code quality were all key to this success.
+
+The project was hosted on [AWS](https://aws.amazon.com/), with [GitHub Actions](https://github.com/features/actions) for CI/CD. On the frontend, the [Ant Design](https://ant.design/) UI library was used, and for the database we used [PostgreSQL](https://www.postgresql.org/) with the [Sequelize ORM](https://sequelize.org/). Testing is done with a mixture of [Jest](https://jestjs.io/) for unit test and integration tests and [Cypress](https://www.cypress.io/) for end-to-end tests.

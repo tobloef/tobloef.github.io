@@ -1,0 +1,21 @@
+---
+title: "Fancy Dice for Roll20"
+subtitle: "Chrome extension that mods the Roll20 virtual tabletop."
+cover: "./screenshot.png"
+coverAlt: "Screenshot of the extension in action, showing a custom die roller UI."
+date: 2019-03-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/roll20-fancy-dice?tab=readme-ov-file#readme" }
+]
+---
+
+This Chrome extension was essentially a mod for the Virtual Tabletop (VTT) platform [Roll20](https://roll20.net/). By intercepting network requests and injecting custom JavaScript, it allowed users to customize the look of the platforms 3D dice. Your chosen design would even be synced with the other players in your game, using a real-time WebSocket server.
+
+The project was a really fun technical challenge, and I was quite pleased with how I was able to turn my scrappy proof-of-concept into a real extension people could use. It also, in a very roundabout way, led me to my first encounter with [Three.js](https://threejs.org/) and 3D graphics on the web, though hacking on the minified code of Roll20 was probably not the easiest way to learn.
+
+This project was also one of the first times I actively encouraged outside contributions. I ended up writing comprehensive [contribution guidelines](https://github.com/tobloef/roll20-fancy-dice/wiki/How-to-add-your-own-dice-to-the-extension) aimed at non-technical folks, and I was pleasantly surprised to see people actively engaging with the project and submitting their own dice designs.
+
+Maintaining an extension that relied on Roll20's minified code came with its own set of challenges, however. Though some workarounds were implemented, the extension would often break when Roll20 updated their code. So when I later switched to a different VTT[^1], I decided to archive the project rather than continue maintaining it.
+
+[^1]: [Foundry VTT](https://foundryvtt.com/), for those curious. It has a powerful extension API and a vibrant community of modders.

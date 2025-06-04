@@ -76,7 +76,8 @@ const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages))
     flex: 1;
     overflow: hidden;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px var(--shadow);
+		transition: 0.3s ease-in-out;
   }
 
   .card .title {

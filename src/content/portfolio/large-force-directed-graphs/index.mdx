@@ -1,0 +1,20 @@
+---
+title: "Large force-directed graphs"
+subtitle: "Using WebGPU to render and animate very large graphs."
+cover: "./partial_graph.png"
+coverAlt: "A visualization of a large force-directed graph"
+date: 2025-06-01
+groups: []
+wip: true
+---
+
+import { Image } from 'astro:assets';
+import fullGraph from './graph.png';
+
+Force-directed graphs are a common way to automatically layout graphs in a visually appealing way. They simulate physical forces between nodes and edges, resulting in a layout that minimizes edge crossings and distributes nodes evenly. Previously, I have been using [d3-force](https://d3js.org/d3-force), but I have not found the performance satisfactory for large graphs.
+
+This project utilizes WebGPU to both render and simulate the graph. If you're a bit smart about how you implement your pipelines, modern machines can handle graphs with hundreds of thousands of nodes and edges (see for example the image above). Additionally, I'm experimenting with a two-step rendering strategy that gives a smooth user experience even if the simulation and rendering takes longer than the acceptable frame time.
+
+Development was helped along with the use of three of my own libraries, [Rhizome](/portfolio/rhizome) for WebGPU resource management, [Hot Reload](/portfolio/hot-reload) for hot reloading shaders, and [Bikbok](/portfolio/bikbok) for the build system and dev server.
+
+<Image src={fullGraph} alt="Zoomed out view of the graph from the cover image" />
