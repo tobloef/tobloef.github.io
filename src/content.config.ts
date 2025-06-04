@@ -10,14 +10,21 @@ const portfolio = defineCollection({
 		coverAlt: z.string(),
 		coverIsSmall: z.boolean().optional(),
 		date: z.date(),
-		groups: z.array(z.string()).optional(),
+		tech: z.array(z.object({
+			image: image(),
+			name: z.string(),
+		})),
+		purpose: z.union([
+			z.literal("personal"),
+			z.literal("work"),
+		]),
 		links: z.array(
 			z.object({
 				label: z.string(),
 				url: z.string().url(),
 			})
 		).optional(),
-		wip: z.boolean().optional(),
+		hidden: z.boolean().optional(),
 	}),
 });
 
