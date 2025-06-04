@@ -19,7 +19,4 @@ For this version of the site, I had three primary goals, all of which Astro has 
 - Instant load times. I've grown tired of webpages being slow when they shouldn't. By keeping it simple and near JavaScript-less, I wanted a site with a Lighthouse score of 100.
 - A simple but pleasing UI, designed for longer text-based content. Should be intuitive to navigate, quick to develop and support readability features such as dark mode.
 
-For the portfolio, I had two additional goals that I wanted to tackle without resorting to client-side JavaScript:
-
-- Spice up the page transitions a bit with the thumbnail images shifting into cover images. I ended up accomplishing this with [View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API), a very interesting API that I'm excited to look more into. I was surprised by how SPA-like you could make an MPA (in a good way, hah!).
-- Sorting and filtering of portfolio items. Given that the site is _not_ server-side rendered, I ended up getting a bit creative with Astro's static site generation. Filtered and sorted results are essentially all pre-generated at compile-time, something which I could probably only do because I know my scope was limited.
+For the portfolio, I also wanted to spice up the page transitions a bit with the thumbnail images shifting into cover images. I ended up accomplishing this with [View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API), a very interesting API that I'm excited to look more into. I was surprised by how SPA-like you could make an MPA (in a good way, hah!).
