@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 import type { MarkdownInstance } from "astro";
 
 type Frontmatter = {
@@ -35,17 +35,23 @@ export async function getStaticPaths() {
   );
 }
 
+interface Props {
+	dest: string;
+	title: string;
+}
+
 const { dest, title } = Astro.props;
 const replacement = `${Astro.url.origin}${dest}`;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout>
 	<Fragment slot="head">
 		<meta name="robots" content="noindex">
 		<meta
       http-equiv="refresh"
       content={`5; url=${replacement}`}
     >
+		<title>{title}</title>
 	</Fragment>
 
 	<p>This page has permanently moved. The new URL is:</p>

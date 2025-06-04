@@ -1,0 +1,32 @@
+---
+interface Props {
+	url?: string;
+	title?: string;
+}
+
+const props = Astro.props;
+---
+
+<div>
+	<a href={props.url ?? "/"}>
+    <span class="icon">↩</span>
+		{props.title ?? "Go to front page"}
+  </a>
+</div>
+
+<style>
+  div {
+    font-size: 1.1em;
+		text-align: center;
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+
+  @media (max-width: 450px) {
+    div {
+      font-size: 0.85em;
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Back from "./Back.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+interface Props {
+	backUrl?: string;
+	backTitle?: string;
+}
+
+const props = Astro.props;
+---
+
+<nav>
+	<Back
+		url={props.backUrl}
+		title={props.backTitle}
+	/>
+	<ThemeSwitcher/>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+  }
+</style>

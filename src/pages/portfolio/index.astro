@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+import Navigation from "../../components/Navigation.astro";
+import { getCollection } from "astro:content";
+import { getItemWithImages } from "../../scripts/getItemWithImages.js";
+
+const portfolioItems = await getCollection("portfolio");
+const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages));
+---
+
+<BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
+	<Fragment slot="head">
+		<title>Portfolio // Tobias Løfgren</title>
+		{
+			itemsWithImages.map((item) => (
+				<link
+					rel="prefetch"
+					href={ item.data.cover }
+					as="image"
+				/>
+			))
+		}
+	</Fragment>
+	<Navigation/>
+	<div class="container">
+		{ itemsWithImages.map((item) => (
+			<a
+				href={ `/portfolio/${ item.id }` }
+				class="link no-accent"
+				data-astro-prefetch="viewport"
+			>
+				<div class="card">
+					<img
+						class="thumbnail"
+						src={ item.data.thumbnail }
+						alt={ item.data.title }
+						style={ `view-transition-name: ${ item.id }-cover-image;` }
+					/>
+					<p class="title">
+						{ item.data.title }
+					</p>
+					<p class="subtitle">
+						{ item.data.subtitle }
+					</p>
+				</div>
+			</a>
+		)) }
+	</div>
+</BaseLayout>
+
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+
+  .container {
+    margin-top: 40px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-gap: 2em;
+    align-content: start;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+  }
+
+  .card .thumbnail {
+    margin: 0 0 0.5em 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card .title {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .card .subtitle {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  .card .link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

@@ -1,12 +1,12 @@
 ---
 import type { MarkdownInstance } from "astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../components/BaseLayout.astro";
 import { formatDate } from "../scripts/date";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 type Frontmatter = {
   title: string;
-	subTitle?: string;
+	subtitle?: string;
 	pubDate: Date;
 };
 
@@ -37,6 +37,9 @@ const byPubDate = (
 	<p>
 		Feel free to check out my stuff on <a href="https://github.com/tobloef">GitHub</a> or <a href="https://bsky.app/profile/tobloef.com">Bluesky<a/>, or reach out directly to <a href="mailto:tobloef@gmail.com">tobloef@gmail.com</a>.
 	</p>
+	<!--<p>
+		You can also check out my <a href="/portfolio">portfolio</a>, where I collect all my projects.
+	</p>-->
 
 	<h2>Blog Posts</h2>
 	<ul>

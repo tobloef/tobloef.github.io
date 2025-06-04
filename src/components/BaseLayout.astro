@@ -1,3 +1,13 @@
+---
+interface Props {
+	styleOverrides?: {
+		maxWidth?: string;
+	}
+}
+
+const props = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -16,25 +26,28 @@
 	</body>
 </html>
 
-<style is:global>
+<style is:global define:vars={{ "max-width": props.styleOverrides?.maxWidth }}>
 	:root {
 		--light-text: hsl(43, 26%, 11%);
 		--light-background: hsl(36, 49%, 87%);
 		--light-primary: hsl(31, 100%, 26%);
 		--light-secondary: hsl(32, 100%, 17%);
 		--light-accent: hsl(38, 100%, 45%);
+		--light-shadow: rgba(0, 0, 0, 0.5);
 
 		--dark-text: hsl(36, 49%, 83%);
 		--dark-background: hsl(30, 6%, 7%);
 		--dark-primary: hsl(31, 100%, 74%);
 		--dark-secondary: hsl(32, 100%, 83%);
 		--dark-accent: hsl(38, 100%, 45%);
+		--dark-shadow: rgba(0, 0, 0, 1);
 
 		--text: var(--light-text);
 		--background: var(--light-background);
 		--primary: var(--light-primary);
 		--secondary: var(--light-secondary);
 		--accent: var(--light-accent);
+		--shadow: var(--light-shadow);
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -44,6 +57,7 @@
 			--primary: var(--dark-primary);
 			--secondary: var(--dark-secondary);
 			--accent: var(--dark-accent);
+			--shadow: var(--dark-shadow);
 		}
 	}
 
@@ -64,7 +78,7 @@
 	main {
 		margin: 0 auto;
 		padding: 0 2em 2em 2em;
-		max-width: 80ch;
+		max-width: var(--max-width, 80ch);
 		display: flex;
 		flex-direction: column;
 	}
@@ -82,11 +96,14 @@
 		color: inherit;
 		text-decoration: none;
 		font-size: inherit;
-		background-position-y: -0%;
-		background-image: linear-gradient(180deg, transparent 50%, var(--accent) 50%);
-		transition: all 0.1s ease;
-		background-size: auto 185%;
 		padding: 3px 0;
+	}
+
+	a:not(.no-accent) {
+    background-position-y: -0%;
+    background-image: linear-gradient(180deg, transparent 50%, var(--accent) 50%);
+    transition: all 0.1s ease;
+    background-size: auto 185%;
 	}
 
 	@media (prefers-color-scheme: dark) {

@@ -1,9 +1,16 @@
-<a id="theme-switcher">Switch to dark mode</a>
+<a id="theme-switcher">Toggle dark mode</a>
 
 <style>
   #theme-switcher {
     cursor: pointer;
     user-select: none;
+		text-align: center;
+  }
+
+  @media (max-width: 450px) {
+    #theme-switcher {
+      font-size: 0.85em;
+    }
   }
 </style>
 
@@ -27,12 +34,15 @@
 	setTheme(isDarkMode);
 
 	function setTheme(isDarkMode: boolean) {
-		themeSwitcher.textContent = isDarkMode ? 'Switch to light mode' : 'Switch to dark mode';
+		//themeSwitcher.textContent = isDarkMode ? 'Switch to light mode' : 'Switch to dark mode';
+
+		// TODO: Figure out a way to tie this to the prefers-color-scheme media query
 
 		document.documentElement.style.setProperty('--text', isDarkMode ? 'var(--dark-text)' : 'var(--light-text)');
 		document.documentElement.style.setProperty('--background', isDarkMode ? 'var(--dark-background)' : 'var(--light-background)');
 		document.documentElement.style.setProperty('--primary', isDarkMode ? 'var(--dark-primary)' : 'var(--light-primary)');
 		document.documentElement.style.setProperty('--secondary', isDarkMode ? 'var(--dark-secondary)' : 'var(--light-secondary)');
 		document.documentElement.style.setProperty('--accent', isDarkMode ? 'var(--dark-accent)' : 'var(--light-accent)');
+		document.documentElement.style.setProperty('--shadow', isDarkMode ? 'var(--dark-shadow)' : 'var(--light-shadow)');
 	}
 </script>

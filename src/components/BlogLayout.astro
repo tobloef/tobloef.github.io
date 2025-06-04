@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from "../scripts/date.js";
+import Navigation from "./Navigation.astro";
+
+const frontmatter = Astro.props.frontmatter ?? {};
+---
+
+<BaseLayout>
+	<Fragment slot="head">
+		<title>{frontmatter?.title} // Tobias Løfgren</title>
+		{frontmatter.subtitle && <meta name="description" content={frontmatter.subtitle}>}
+	</Fragment>
+	<Navigation />
+	<h1>{frontmatter.title}</h1>
+	<p class="subtitle de-emphasize">{frontmatter.subtitle}</p>
+	<slot />
+	<p class="publication-date de-emphasize">
+		Published on: {formatDate({
+		date: frontmatter.pubDate,
+		includeDay: true
+	})}
+	</p>
+</BaseLayout>
+
+<style>
+	h1 {
+		margin-bottom: 0;
+		margin-top: 1em;
+	}
+
+	.subtitle {
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
+
+	.publication-date {
+		margin-top: 2em;
+		margin-bottom: 2em;
+	}
+</style>
