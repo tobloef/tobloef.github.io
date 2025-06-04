@@ -17,6 +17,7 @@ const portfolioItems = await getCollection("portfolio");
 			<a
 				href={`/portfolio/${ item.id }`}
 				class="link no-accent"
+				data-astro-prefetch
 			>
 				<div class="card">
 					<Image
@@ -24,7 +25,7 @@ const portfolioItems = await getCollection("portfolio");
 						src={item.data.cover}
 						alt={item.data.title}
 						width={400}
-						style={`view-transition-name: ${ item.id }-cover-image;`}
+						transition:name={`${item.id}-cover-image`}
 					/>
 					<p class="title">
 						{item.data.title}

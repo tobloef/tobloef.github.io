@@ -29,7 +29,7 @@ const { Content } = await render(item);
 			src={item.data.cover}
 			alt={item.data.title}
 			class="cover"
-			style={`view-transition-name: ${item.id}-cover-image;`}
+			transition:name={`${item.id}-cover-image`}
 		/>
 		<div class="text">
 			<h1 class="title">

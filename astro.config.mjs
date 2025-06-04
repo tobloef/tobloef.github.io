@@ -10,6 +10,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 export default defineConfig({
   site: "https://tobloef.com",
   output: "static",
+  prefetch: true,
   markdown: {
     rehypePlugins: [
       rehypeSlug,
