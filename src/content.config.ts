@@ -7,6 +7,7 @@ const portfolio = defineCollection({
 		title: z.string(),
 		subtitle: z.string(),
 		cover: image(),
+		coverAlt: z.string(),
 	}),
 });
 

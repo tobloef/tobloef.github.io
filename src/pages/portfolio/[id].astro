@@ -1,14 +1,21 @@
 ---
-import { getCollection, render } from 'astro:content';
-import { Image } from "astro:assets";
+import {
+	getCollection,
+	render,
+} from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
+import { getItemWithImages } from "../../scripts/getItemWithImages.js";
 
 export async function getStaticPaths() {
-	const portfolioItems = await getCollection('portfolio');
-	return portfolioItems.map((item) => ({
-		params: { id: item.id },
-		props: { item },
+	const portfolioItems = await getCollection("portfolio");
+
+	return await Promise.all(portfolioItems.map(async (item) => {
+		const itemWithImage = await getItemWithImages(item);
+		return {
+			params: { id: itemWithImage.id },
+			props: { item: itemWithImage },
+		};
 	}));
 }
 
@@ -19,23 +26,24 @@ const { Content } = await render(item);
 <BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
 	<Fragment slot="head">
 		<title>Portfolio // Tobias Løfgren</title>
+		<meta name="robots" content="noindex"/>
 	</Fragment>
 	<Navigation
 		backUrl="/portfolio"
 		backTitle="Back to portfolio"
 	/>
 	<div class="container">
-		<Image
-			src={item.data.cover}
-			alt={item.data.title}
+		<img
+			src={ item.data.cover }
+			alt={ item.data.title }
 			class="cover"
-			transition:name={`${item.id}-cover-image`}
+			style={ `view-transition-name: ${ item.id }-cover-image;` }
 		/>
 		<div class="text">
 			<h1 class="title">
-				{item.data.title}
+				{ item.data.title }
 			</h1>
-			<Content />
+			<Content/>
 		</div>
 	</div>
 </BaseLayout>
@@ -45,24 +53,24 @@ const { Content } = await render(item);
     navigation: auto;
   }
 
-	.container {
-		margin-top: 2em;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  .container {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.cover {
-		margin: 0 0 1em 0;
-		max-height: 30em;
-		border-radius: 5px;
-		box-shadow: 0 0 10px var(--shadow);
-	}
+  .cover {
+    margin: 0 0 1em 0;
+    max-height: 30em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow);
+  }
 
-	.text {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+  .text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   h1 {

@@ -2,36 +2,45 @@
 import BaseLayout from "../../components/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
+import { getItemWithImages } from "../../scripts/getItemWithImages.js";
 
 const portfolioItems = await getCollection("portfolio");
+const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages));
 ---
 
 <BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
 	<Fragment slot="head">
 		<title>Portfolio // Tobias Løfgren</title>
+		{
+			itemsWithImages.map((item) => (
+				<link
+					rel="prefetch"
+					href={ item.data.cover }
+					as="image"
+				/>
+			))
+		}
 	</Fragment>
 	<Navigation/>
 	<div class="container">
-		{ portfolioItems.map((item) => (
+		{ itemsWithImages.map((item) => (
 			<a
-				href={`/portfolio/${ item.id }`}
+				href={ `/portfolio/${ item.id }` }
 				class="link no-accent"
-				data-astro-prefetch
+				data-astro-prefetch="viewport"
 			>
 				<div class="card">
-					<Image
+					<img
 						class="thumbnail"
-						src={item.data.cover}
-						alt={item.data.title}
-						width={400}
-						transition:name={`${item.id}-cover-image`}
+						src={ item.data.thumbnail }
+						alt={ item.data.title }
+						style={ `view-transition-name: ${ item.id }-cover-image;` }
 					/>
 					<p class="title">
-						{item.data.title}
+						{ item.data.title }
 					</p>
 					<p class="subtitle">
-						{item.data.subtitle}
+						{ item.data.subtitle }
 					</p>
 				</div>
 			</a>
