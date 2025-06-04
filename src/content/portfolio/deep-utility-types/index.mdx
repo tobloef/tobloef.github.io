@@ -1,0 +1,44 @@
+---
+title: "Deep Utility Types"
+subtitle: "Automatically swap out modules, assets, and more at runtime."
+cover: "./deep_utility_types_banner.png"
+coverAlt: "Code snippet showing the usage of deep-utility-types."
+date: 2023-06-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/hot-reload?tab=readme-ov-file#readme" },
+  { label: "NPM", url: "https://www.npmjs.com/package/deep-utility-types" }
+]
+---
+
+Utility types for operations on nested objects. Fully type-safe, nice autocompletion, and even works with arrays.
+
+Creating this library really allowed me to get deep into working with TypeScript's type system. I later used a lot of what I learned here to create the type-safe query API of [Crockpot](/portfolio/crockpot).
+
+```typescript
+import { DeepOmit } from 'deep-utility-types';
+
+type Example = {
+  foo1: string;
+  foo2: {
+    bar1: string;
+    bar2: {
+      baz1: string;
+      baz2: string;
+    };
+  };
+};
+
+type Omitted = DeepOmit<Example, 'foo2.bar1' | 'foo2.bar2.baz1'>;
+
+const omitted: Omitted = {
+  foo1: 'foo1',
+  foo2: {
+    bar2: {
+      baz2: 'baz2',
+    },
+  },
+};
+```
+
+More examples can be found in the [README](https://github.com/tobloef/hot-reload?tab=readme-ov-file#readme).

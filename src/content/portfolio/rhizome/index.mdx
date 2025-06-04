@@ -1,0 +1,23 @@
+---
+title: "Rhizome"
+subtitle: "TypeScript library for managing WebGPU resources."
+cover: "./rhizome_banner.png"
+coverAlt: "Illustration of TypeScript code and a WebGPU resource tree."
+date: 2025-03-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/rhizome?tab=readme-ov-file#readme" },
+]
+---
+
+Rhizome is a small TypeScript library for creating what I call "reactive resource trees". It's essentially a graph where each node is a resource (a buffer, a Canvas element, an image, etc.) and each edge is a dependency between resources. The library automatically tracks these dependencies and updates the resources when their dependencies change.
+
+I use Rhizome for my WebGPU projects to simplify management of the many low-level resources that are needed for rendering. The reactivity comes in handy in many scenarios, including:
+
+- Browsers can lose the GPU context for a number of reasons[^1], such as when a tab is moved to the background for a long time. All GPU-related resources are lost in this case, but Rhizome can automatically recreate them when the context is restored.
+- Certain textures may need to be updated when the canvas is resized, or when the device pixel ratio changes.
+- Assets like image textures can be hot-reloaded when the source file changes. I integrate with my own [hot reloading library](/portfolio/hot-reload) for this.
+
+Since Rhizome encapsulates each resource type, it also means that I have easily been able to build a set of common resource types that can be used across projects. This alleviates a lot of the boilerplate code needed when working with WebGPU.
+
+[^1]: https://toji.dev/webgpu-best-practices/device-loss.html

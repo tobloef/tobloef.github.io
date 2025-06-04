@@ -1,0 +1,23 @@
+---
+title: "Hot Reload & HMR in JavaScript"
+subtitle: "Automatically swap out modules, assets, and more at runtime."
+cover: "./hot_reload_banner.png"
+coverAlt: "Illustration of a video game being hot reloaded."
+date: 2024-06-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/hot-reload?tab=readme-ov-file#readme" },
+]
+---
+
+One of the original goals of [Bikbok](/portfolio/bikbok), my tiny modular build system, was to have a simple way to swap out JavaScript modules at runtime when their source files change (known as Hot Module Replacement, or HMR). This is already a popular feature in build tools like [Vite](https://vite.dev/), but I wanted something lightweight and framework-agnostic.
+
+Another goal of this project was to be able to easily hook into the hot reloading process for non-JavaScript assets as well, such as WebGPU shaders, texture assets, and so on. This has been extremely useful in my WebGPU and game development projects, where it allows me to quickly iterate without losing the current state.
+
+During development, I had to solve some interesting challenges around injecting the hot-reloading logic:
+
+* When and how should hot-reloading logic be injected into the code? I ended up with [a module](https://github.com/tobloef/bikbok/blob/main/src/module/modules/hot-reload.js) for my build-tool Bikbok that intercepts scripts served by the dev server.
+* How can module imports by parsed and replace at runtime? I experimented with many different approaches, including some interesting uses of the [Node.js V8 module](https://nodejs.org/api/v8.html), but ultimately settled on parsing [Regular Expressions](https://github.com/tobloef/hot-reload/blob/main/src/injection/inject-hot-imports.js).
+* How can breakpoint locations and stack traces be preserved when modules are swapped out? I ended up implementing a simple [source map generator](https://github.com/tobloef/hot-reload/blob/c4695861839bcdd808c2137de1eccc049e7e5a6c/src/injection/inject-hot-imports.js#L138).
+
+I'm currently working on a revised version of the library and blog post about the whole process.

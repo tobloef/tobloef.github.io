@@ -1,0 +1,19 @@
+---
+title: "Neural Networks from Scratch"
+subtitle: "Once in Python, once in Rust."
+cover: "./mnist.png"
+coverAlt: "Screenshot of the extension in action, showing a custom die roller UI."
+date: 2019-03-01
+groups: []
+coverIsSmall: true
+links: [
+{ label: "GitHub (Python, 2017)", url: "https://github.com/tobloef/neural-network-python" },
+{ label: "GitHub (Rust, 2023)", url: "https://github.com/tobloef/neural-network-rust" }
+]
+---
+
+The original Python project from 2017 was an attempt to understand what at the time felt like new technology. Today, we are of course keenly aware of machine-learning based technology, as am I now keenly aware that neural networks originated about 50 years before I was born.
+
+My goal was to implement the network and train it on the MNIST handwritten digit dataset, without the use of any machine learning libraries. In the end I achieved a result of about 95% accuracy. It is happily/unfortunately the most advanced math I have had to do in a programming project yet.
+
+Years later, in 2023, I used the original Python code as a reference to implement a similar neural network in Rust. As you might expect, the Rust version ran quite a bit faster, which allowed me to iterate more on tuning the network, ending up with 98.5% accuracy on the same dataset. It also gave me many thoughts about Rust, none of which are informed enough to share here.

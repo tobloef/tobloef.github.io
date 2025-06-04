@@ -1,0 +1,22 @@
+---
+title: "Bikbok"
+subtitle: "Tiny modular build system for the web."
+cover: "./bikbok_emojis.png"
+coverAlt: "A package emoji and a hammer emoji, representing a build system."
+coverIsSmall: true
+date: 2024-06-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/bikbok?tab=readme-ov-file#readme" },
+]
+---
+
+Bikbok is a tiny modular build system for the web, made from scratch with JavaScript and Node.js. BikBok was created for use in projects that don't need web frameworks, such as my WebGPU projects, games or other web experiments. I wanted something that I could immediately change to suit my needs, and that would be easy to extend with new features.
+
+Building Bikbok was also a deliberate exercise in minimizing "magic". I wanted to see how close I could remain to the built-in capabilities of Node.js and the browser, while still providing the developer experience I wanted. In this, it follows my [Wheel Reinventor's Principles](/blog/wheel-reinventors-principles).
+
+A few neat things about Bikbok:
+
+- **Hot Module Replacement**: When running the dev server, JavaScript modules are automatically swapped out at runtime when their source files change. Can also be hooked up to work with WebGPU shaders, textures, and so on. All powered by my [Hot Reload](/portfolio/hot-reload) library.
+- **Import Maps**: Bikbok automatically generates import maps for modules in `node_modules`, so they can be used without a bundling step.
+- **Typed JavaScript**: For the codebase of Bikbok itself, I wanted to experiment with writing plain JavaScript typed with JSDoc. This essentially allows you to use TypeScript without needing to transpile your code. I have written about my experience with this in [this blog post](/blog/buildless-typescript).

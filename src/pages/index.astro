@@ -32,14 +32,14 @@ const byPubDate = (
 	</div>
 
 	<p>
-		Hi there, thanks for stopping by! By day I work as a Software Engineer for <a href="https://www.lego.com/">The LEGO Group</a> in Denmark and by night I work on a million side projects, a few of which I write about here.
+		Hi there, thanks for stopping by! By day I work as a Software Engineer for <a href="https://www.lego.com/" target="_blank">The LEGO Group</a> in Denmark and by night I work on a million side projects, a few of which I write about here.
 	</p>
 	<p>
-		Feel free to check out my stuff on <a href="https://github.com/tobloef">GitHub</a> or <a href="https://bsky.app/profile/tobloef.com">Bluesky<a/>, or reach out directly to <a href="mailto:tobloef@gmail.com">tobloef@gmail.com</a>.
+		Feel free to check out my stuff on <a href="https://github.com/tobloef" target="_blank">GitHub</a> or <a href="https://bsky.app/profile/tobloef.com" target="_blank">Bluesky<a/>, or reach out directly to <a href="mailto:tobloef@gmail.com">tobloef@gmail.com</a>.
 	</p>
-	<!--<p>
-		You can also check out my <a href="/portfolio">portfolio</a>, where I collect all my projects.
-	</p>-->
+	<p>
+		You can also check out my <a href="/portfolio">portfolio</a>, where I collect some my projects.
+	</p>
 
 	<h2>Blog Posts</h2>
 	<ul>
@@ -50,9 +50,7 @@ const byPubDate = (
 				<li>
 					<a href={post.url}>{post.frontmatter.title}</a>
 					<span class="de-emphasize">
-						({formatDate({
-							date: post.frontmatter.pubDate
-						})})
+						({formatDate(post.frontmatter.pubDate)})
 					</span>
 				</li>
     	))

@@ -10,7 +10,7 @@ export async function getItemWithImages<
 	const thumbnail = await getImage({
 		src: item.data.cover,
 		format: "webp",
-		width: 300,
+		width: 400,
 	});
 	const cover = await getImage({
 		src: item.data.cover,

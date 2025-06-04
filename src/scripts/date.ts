@@ -22,11 +22,11 @@ const ORDINAL_SUFFIXES = {
   "other": "th"
 };
 
-export function formatDate(props: {
+export function formatDate(
   date: Date | string,
-  includeDay?: boolean
-}): string {
-  let { date, includeDay = false } = props;
+  options?: { includeDay?: boolean }
+): string {
+  let { includeDay = false } = options ?? {};
 
   if (typeof date === "string") {
     date = new Date(date);

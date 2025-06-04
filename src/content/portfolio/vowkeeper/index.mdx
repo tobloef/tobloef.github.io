@@ -1,0 +1,22 @@
+---
+title: "VowKeeper"
+subtitle: "Journal-based VTT with cool document embeds."
+cover: "./screenshot.png"
+coverAlt: "Screenshot of the VowKeeper interface, showing a journal entry with embedded dice rolls."
+date: 2021-06-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/VowKeeper" },
+	{ label: "Demo", url: "https://tobloef.com/VowKeeper" }
+]
+---
+
+Built with Svelte, VowKeeper holds a special place in my heart, despite me eventually abandoning the project.
+
+It's an online "Virtual Tabletop" (VTT) for playing roleplaying games, specifically the solo journaling game [Ironsworn](https://tomkinpress.com/). It takes a unique approach to the VTT concept by focusing on the journaling aspect of the game, and is essentially a rich text editor with a built-in character sheet and a dice roller.
+
+The idea I wanted to explore with VowKeeper was the ability to embed game-specific content directly into the journal as you wrote. For example, you could roll the dice for a specific in-game skill, then simply drag the result from the dice roller into the document, embedding it as a small widget. The widget could even be interacted with to further act on the roll and would update automatically if the underlying roll changed.
+
+For the tech, I evaluated various text-editing libraries like [PromiseMirror](https://prosemirror.net/), [Quill](https://quilljs.com/), and [Editor.js](https://editorjs.io/), but ultimately settled on [Tiptap](https://tiptap.dev/) which I found to have the right level of modularity.
+
+I still strongly believe in the concept of a document-focused VTT with rich embeds. I think it allows a level of flow and flexibility that I have still not seen elsewhere, and would love to do something similar in a future project.

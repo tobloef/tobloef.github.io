@@ -6,6 +6,7 @@ import {
 import BaseLayout from "../../components/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
 import { getItemWithImages } from "../../scripts/getItemWithImages.js";
+import { formatDate } from "../../scripts/date.js";
 
 export async function getStaticPaths() {
 	const portfolioItems = await getCollection("portfolio");
@@ -36,13 +37,23 @@ const { Content } = await render(item);
 		<img
 			src={ item.data.cover }
 			alt={ item.data.title }
-			class="cover"
+			class={ item.data.coverIsSmall ? "cover small" : "cover" }
 			style={ `view-transition-name: ${ item.id }-cover-image;` }
 		/>
 		<div class="text">
 			<h1 class="title">
 				{ item.data.title }
 			</h1>
+			<p class="byline">
+				<span class="date de-emphasize">{ formatDate(item.data.date) }</span>
+				{ item.data.links && (
+					<span class="links">
+						{ item.data.links.map(((link) => (
+							<a href={ link.url } target="_blank">{ link.label }</a>
+						))) }
+					</span>
+				) }
+			</p>
 			<Content/>
 		</div>
 	</div>
@@ -62,10 +73,26 @@ const { Content } = await render(item);
 
   .cover {
     margin: 0 0 1em 0;
-    max-height: 30em;
+    max-height: 20em;
     border-radius: 5px;
     box-shadow: 0 0 10px var(--shadow);
   }
+
+  .cover.small {
+    max-height: 15em;
+  }
+
+  .byline {
+    margin-top: 0;
+  }
+
+	.links {
+		margin-left: 0.5em;
+	}
+
+	.links :not(:last-child) {
+		margin-right: 1em;
+	}
 
   .text {
     display: flex;

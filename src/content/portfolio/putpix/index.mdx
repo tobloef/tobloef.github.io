@@ -1,0 +1,18 @@
+---
+title: "Putpix"
+subtitle: "TypeScript 3D rasterizer, one pixel at a time."
+cover: "./rats.png"
+coverAlt: "Screenshot of two rats being rendered by Putpix."
+date: 2022-08-01
+groups: []
+links: [
+	{ label: "GitHub", url: "https://github.com/tobloef/putpix-3d-ts" },
+	{ label: "Demo", url: "https://tobloef.com/putpix-3d-ts/" }
+]
+---
+
+TypeScript-based 3D rasterizer written completely from scratch. It does not use a 3D graphics library like WebGL or WebGPU, and instead relies only on a simple HTML5 canvas and a function to put a single put pixel on the screen (hence the name). This means that it runs on the CPU, making it quite slow for any practical purposes.
+
+Performance was an explicit non-goal, however. I built the renderer to learn more about the math and technical hoops required to render 3D graphics, knowledge I would later carry over to my WebGPU work.
+
+Putpix supports point lights, directional lights, and ambient lights. It also supports textures and smooth shading, as well as loading models from .obj files.

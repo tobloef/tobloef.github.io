@@ -1,0 +1,16 @@
+---
+title: "LEGO Ideas"
+subtitle: "Crowdsourcing platform with 3M+ users."
+cover: "./challenge-page.png"
+coverAlt: "Screenshot of the LEGO Ideas challenge page."
+date: 2022-11-01
+groups: []
+links: [
+	{ label: "Main Page", url: "https://ideas.lego.com/" },
+	{ label: "Challenges Page", url: "https://beta.ideas.lego.com/challenges" }
+]
+---
+
+When I worked on LEGO Ideas, a large crowdsourcing platform with over 3 million users, our mission was to rethink the website from the ground up, in order to deliver a smoother experience to a wide set of user groups. Though strategies shifted over time and work is still ongoing, you can for example see some of that work on the [Challenges page](https://beta.ideas.lego.com/challenges).
+
+I was lucky enough to work in virtually every part of the codebase. The stack was TypeScript-based, with [Next.js](https://nextjs.org/) as the frontend and BFF, and [Node.js](https://nodejs.org/en) with [Nest.js](https://nestjs.com/) on the backend. The synchronous API was a federated [GraphQL](https://graphql.org/) layer talking to a handful of microservices, while the asynchronous API used [Apache Pulsar](https://pulsar.apache.org/) for events. For the database, we used [PostgreSQL](https://www.postgresql.org/) and [TypeORM](https://typeorm.io/). We also had quite a comprehensive test suite with [Jest](https://jestjs.io/) for unit tests and [Cypress](https://www.cypress.io/) for end-to-end tests.

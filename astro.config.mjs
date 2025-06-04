@@ -5,6 +5,7 @@ import expressiveCode from 'astro-expressive-code';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
+import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,7 @@ export default defineConfig({
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
       rehypeUnwrapImages,
+      [rehypeExternalLinks, { target: '_blank' }],
     ]
   },
   integrations: [
