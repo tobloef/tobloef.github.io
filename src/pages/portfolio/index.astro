@@ -46,6 +46,31 @@ const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages))
 			</a>
 		)) }
 	</div>
+	<hr />
+	<h2>Honorable Mentions</h2>
+	<p>
+		There's a lot of projects that I haven't included on this page for various reasons.
+		Most of them can be found on <a href="https://github.com/tobloef/">my GitHub</a>,
+		but just because you scrolled down this fair, I'll mention a some of them here:
+	</p>
+	<ul>
+		<li><b><a href="https://tobloef.com/text2mindmap/">Text2Mindmap</a></b> - Around 20K monthly users. Would love to turn it into a product one day.</li>
+		<li><b>A whole bunch of video games</b> - Mostly C#-based with Unity. Recently JS-based with WebGPU.</li>
+		<li><b>Micro-frontend Experiments</b> - A handful of different implementations for composing micro-frontends, made while working at The LEGO Group.</li>
+		<li><b><a href="https://tobloef.com/bouldering-tracker/">Bouldering tracker</a></b> - Great experience using <a href="https://supabase.com/">Supabase</a> for the backend.</li>
+		<li><b><a href="https://tobloef.com/markant/">Markdown editor</a></b> - One of the first web apps I released, learned a lot of web fundamentals.</li>
+		<li><b><a href="https://github.com/tobloef/face-generator?tab=readme-ov-file#readme">Cartoon face generator</a></b> - Low effort CryptoPunks parody, turned out surprisingly fun.</li>
+		<li><b>Security CTFs</b> - Wrote <a href="https://tobloef.com/">blog posts</a> about some of them. Was part of the Danish national team for European Cyber Security Challenge.</li>
+		<li><b>SET Solver</b> - Webcam-based solver for the <a href="https://www.playmonster.com/brands/set/">SET card game</a>, written in Python with OpenCV.</li>
+		<li><b>Resume creator</b> - Squarespace-like builder with a custom Web Component-based microframework.</li>
+		<li><b><a href="https://github.com/tobloef/map-application">Map application</a></b> - Java application for displaying and navigating large OpenStreetMap datasets.</li>
+		<li><b><a href="https://github.com/tobloef/creative?tab=readme-ov-file#readme">Creative programming sketches</a></b> - Small visual experiments controllable via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API">Web MIDI</a>.</li>
+		<li><b>.NET apps</b> - Various internal tools created for <a href="https://www.ilxsystem.dk/">ILX System</a>, integrating with the worst external APIs I've ever had the displeasure of working with.</li>
+		<li><b><a href="https://github.com/tobloef/co2?tab=readme-ov-file#readme">Real-time CO₂ dashboard</a></b> - Hooked up a small CO₂ sensor to a real-time graph, for use in office and university.</li>
+		<li><b>Scrabble bot</b> - Created in F#, I learned a lot about functional programming from this project.</li>
+		<li><b><a href="https://github.com/tobloef/TwitchControlsARobot?tab=readme-ov-file#readme">TwitchControlsARobot</a></b> - Real-life robot controlled by <a href="https://www.twitch.tv/twitchcontrolsarobot">Twitch.tv chat</a>.</li>
+		<li><b>Minecraft server mod</b> - The first programming project I worked on for someone else (2013). I can't believe I actually finished it.</li>
+	</ul>
 </BaseLayout>
 
 <style>
@@ -96,4 +121,9 @@ const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages))
     text-decoration: none;
     color: inherit;
   }
+
+  hr {
+		margin-top: 2em;
+		width: 100%;
+	}
 </style>
