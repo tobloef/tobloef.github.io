@@ -1,14 +1,16 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { getItemWithImages } from "../../scripts/getItemWithImages.js";
 import BaseLayout from "../../components/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
-import { getCollection } from "astro:content";
-import { getItemWithImages } from "../../scripts/getItemWithImages.js";
 
-const portfolioItems = await getCollection("portfolio");
-const itemsWithImages = await Promise.all(portfolioItems.map(getItemWithImages));
-const items = itemsWithImages.toSorted((a, b) => {
-	return new Date(b.data.date) - new Date(a.data.date);
-});
+const portfolioCollection = await getCollection("portfolio");
+const portfolioCollectionWithImages = await Promise.all(portfolioCollection.map(getItemWithImages));
+
+const items = portfolioCollectionWithImages
+			.toSorted((a, b) => b.data.date - a.data.date)
+			.filter((item) => item.data.hidden !== true);
 ---
 
 <BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
@@ -46,6 +48,14 @@ const items = itemsWithImages.toSorted((a, b) => {
 					<p class="subtitle">
 						{ item.data.subtitle }
 					</p>
+					<div class="tech-icons">
+						{ item.data.tech.map((tech) => (
+							<Image
+								src={tech.image}
+								alt={`${ tech.name } icon`}
+							/>
+						)) }
+					</div>
 				</div>
 			</a>
 		)) }
@@ -101,6 +111,7 @@ const items = itemsWithImages.toSorted((a, b) => {
     display: flex;
     flex-direction: column;
     height: 250px;
+		position: relative;
   }
 
   .card .thumbnail {
@@ -130,6 +141,22 @@ const items = itemsWithImages.toSorted((a, b) => {
   .card .link {
     text-decoration: none;
     color: inherit;
+  }
+
+	.card .tech-icons {
+		display: flex;
+		position: absolute;
+    justify-content: flex-end;
+		width: 100%;
+		right: 1em;
+		top: 1em;
+  }
+
+	.card .tech-icons img {
+    margin: 0 0 0 0.5em;
+    height: 2em;
+		width: 2em;
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
   }
 
   hr {
