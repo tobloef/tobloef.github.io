@@ -9,8 +9,8 @@ const portfolioCollection = await getCollection("portfolio");
 const portfolioCollectionWithImages = await Promise.all(portfolioCollection.map(getItemWithImages));
 
 const items = portfolioCollectionWithImages
-			.toSorted((a, b) => b.data.date - a.data.date)
-			.filter((item) => item.data.hidden !== true);
+	.toSorted((a, b) => b.data.date - a.data.date)
+	.filter((item) => item.data.hidden !== true);
 ---
 
 <BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
@@ -27,13 +27,24 @@ const items = portfolioCollectionWithImages
 		}
 	</Fragment>
 	<Navigation/>
-	<h1>Portfolio</h1>
+	<div class="header">
+		<h1>Portfolio</h1>
+		<label>
+			<b>Show:</b>
+			<select id="purpose-filter" class="filter-dropdown">
+				<option value="all">Everything</option>
+				<option value="work">Work only</option>
+				<option value="personal">Personal only</option>
+			</select>
+		</label>
+	</div>
 	<div class="container">
 		{ items.map((item) => (
 			<a
 				href={ `/portfolio/${ item.id }` }
-				class="link no-accent"
+				class="link no-accent portfolio-item"
 				data-astro-prefetch="viewport"
+				data-purpose={ item.data.purpose }
 			>
 				<div class="card">
 					<img
@@ -51,8 +62,8 @@ const items = portfolioCollectionWithImages
 					<div class="tech-icons">
 						{ item.data.tech.map((tech) => (
 							<Image
-								src={tech.image}
-								alt={`${ tech.name } icon`}
+								src={ tech.image }
+								alt={ `${ tech.name } icon` }
 							/>
 						)) }
 					</div>
@@ -60,46 +71,100 @@ const items = portfolioCollectionWithImages
 			</a>
 		)) }
 	</div>
-	<hr />
+	<hr/>
 	<h2>Honorable Mentions</h2>
 	<p>
-		There's a lot of projects that I haven't included on this page for various reasons.
-		Most of them can be found on <a href="https://github.com/tobloef/">my GitHub</a>,
-		but just because you scrolled down this fair, I'll mention a some of them here:
+		Some of the projects that didn't get a dedicated entry in the portfolio, but are still worth mentioning:
 	</p>
 	<ul>
-		<li><b><a href="https://tobloef.com/text2mindmap/">Text2Mindmap</a></b> - Around 20K monthly users. Would love to turn it into a product one day.</li>
+		<li><b><a href="https://tobloef.com/text2mindmap/">Text2Mindmap</a></b> - Around 20K monthly users. Would love to
+			turn it into a product one day.
+		</li>
 		<li><b>A whole bunch of video games</b> - Mostly C#-based with Unity. Recently JS-based with WebGPU.</li>
-		<li><b>Micro-frontend Experiments</b> - A handful of different implementations for composing micro-frontends, made while working at The LEGO Group.</li>
-		<li><b><a href="https://tobloef.com/bouldering-tracker/">Bouldering tracker</a></b> - Great experience using <a href="https://supabase.com/">Supabase</a> for the backend.</li>
-		<li><b><a href="https://tobloef.com/markant/">Markdown editor</a></b> - One of the first web apps I released, learned a lot of web fundamentals.</li>
-		<li><b><a href="https://github.com/tobloef/face-generator?tab=readme-ov-file#readme">Cartoon face generator</a></b> - Low effort CryptoPunks parody, turned out surprisingly fun.</li>
-		<li><b>Security CTFs</b> - Wrote <a href="https://tobloef.com/">blog posts</a> about some of them. Was part of the Danish national team for the European Cyber Security Challenge.</li>
-		<li><b>SET Solver</b> - Webcam-based solver for the <a href="https://www.playmonster.com/brands/set/">SET card game</a>, written in Python with OpenCV.</li>
+		<li><b>Micro-frontend Experiments</b> - A handful of different implementations for composing micro-frontends, made
+			while working at The LEGO Group.
+		</li>
+		<li><b><a href="https://tobloef.com/bouldering-tracker/">Bouldering tracker</a></b> - Great experience using <a
+			href="https://supabase.com/">Supabase</a> for the backend.
+		</li>
+		<li><b><a href="https://tobloef.com/markant/">Markdown editor</a></b> - One of the first web apps I released,
+			learned a lot of web fundamentals.
+		</li>
+		<li><b><a href="https://github.com/tobloef/face-generator?tab=readme-ov-file#readme">Cartoon face generator</a></b>
+			- Low effort CryptoPunks parody, turned out surprisingly fun.
+		</li>
+		<li><b>Security CTFs</b> - Wrote <a href="https://tobloef.com/">blog posts</a> about some of them. Was part of the
+			Danish national team for the European Cyber Security Challenge.
+		</li>
+		<li><b>SET Solver</b> - Webcam-based solver for the <a href="https://www.playmonster.com/brands/set/">SET card
+			game</a>, written in Python with OpenCV.
+		</li>
 		<li><b>Resume creator</b> - Squarespace-like builder with a custom Web Component-based microframework.</li>
-		<li><b><a href="https://github.com/tobloef/map-application">Map application</a></b> - Java application for displaying and navigating large OpenStreetMap datasets.</li>
-		<li><b><a href="https://github.com/tobloef/creative?tab=readme-ov-file#readme">Creative programming sketches</a></b> - Small visual experiments controllable via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API">Web MIDI</a>.</li>
-		<li><b>.NET apps</b> - Various internal tools created for <a href="https://www.ilxsystem.dk/">ILX System</a>, integrating with the worst external APIs I've ever had the displeasure of working with.</li>
-		<li><b><a href="https://github.com/tobloef/co2?tab=readme-ov-file#readme">Real-time CO₂ dashboard</a></b> - Hooked up a small CO₂ sensor to a real-time graph, for use in office and university.</li>
+		<li><b><a href="https://github.com/tobloef/map-application">Map application</a></b> - Java application for
+			displaying and navigating large OpenStreetMap datasets.
+		</li>
+		<li><b><a href="https://github.com/tobloef/creative?tab=readme-ov-file#readme">Creative programming sketches</a></b>
+			- Small visual experiments controllable via <a
+				href="https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API">Web MIDI</a>.
+		</li>
+		<li><b>.NET apps</b> - Various internal tools created for <a href="https://www.ilxsystem.dk/">ILX System</a>,
+			integrating with the worst external APIs I've ever had the displeasure of working with.
+		</li>
+		<li><b><a href="https://github.com/tobloef/co2?tab=readme-ov-file#readme">Real-time CO₂ dashboard</a></b> - Hooked
+			up a small CO₂ sensor to a real-time graph, for use in office and university.
+		</li>
 		<li><b>Scrabble bot</b> - Created in F#, I learned a lot about functional programming from this project.</li>
-		<li><b><a href="https://github.com/tobloef/TwitchControlsARobot?tab=readme-ov-file#readme">TwitchControlsARobot</a></b> - Real-life robot controlled by <a href="https://www.twitch.tv/twitchcontrolsarobot">Twitch.tv chat</a>.</li>
-		<li><b>Minecraft server mod</b> - The first programming project I worked on for someone else (2013). I can't believe I actually finished it.</li>
+		<li><b><a href="https://github.com/tobloef/TwitchControlsARobot?tab=readme-ov-file#readme">TwitchControlsARobot</a></b>
+			- Real-life robot controlled by <a href="https://www.twitch.tv/twitchcontrolsarobot">Twitch.tv chat</a>.
+		</li>
+		<li><b>Minecraft server mod</b> - The first programming project I worked on for someone else (2013). I can't believe
+			I actually finished it.
+		</li>
 	</ul>
 </BaseLayout>
+
 
 <style>
   @view-transition {
     navigation: none;
   }
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1.5em 0 0.5em 0;
+  }
+
   h1 {
-		margin-top: 1em;
+		line-height: 1em;
     margin-bottom: 0;
+  }
+
+  .filter-dropdown {
+    padding: 0.35em 0.5em;
+    border: 1px solid var(--text);
+    border-radius: 5px;
+    background-color: var(--background);
+    color: var(--text);
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .filter-dropdown:hover {
+    border-color: var(--accent);
+  }
+
+  .filter-dropdown:focus {
+    outline: none;
+    border-color: var(--accent);
   }
 
   .container {
     margin-top: 1em;
-		margin-bottom: 2em;
+    margin-bottom: 2em;
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
@@ -111,7 +176,7 @@ const items = portfolioCollectionWithImages
     display: flex;
     flex-direction: column;
     height: 250px;
-		position: relative;
+    position: relative;
   }
 
   .card .thumbnail {
@@ -123,7 +188,7 @@ const items = portfolioCollectionWithImages
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 0 0 10px var(--shadow);
-		transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 
   .card .title {
@@ -143,23 +208,50 @@ const items = portfolioCollectionWithImages
     color: inherit;
   }
 
-	.card .tech-icons {
-		display: flex;
-		position: absolute;
+  .card .tech-icons {
+    display: flex;
+    position: absolute;
     justify-content: flex-end;
-		width: 100%;
-		right: 1em;
-		top: 1em;
+    right: 0.8em;
+    top: 0.8em;
   }
 
-	.card .tech-icons img {
+  .card .tech-icons img {
     margin: 0 0 0 0.5em;
     height: 2em;
-		width: 2em;
-    filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, 1));
+    width: 2em;
+    filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 1));
   }
 
   hr {
-		width: 100%;
-	}
+    width: 100%;
+  }
 </style>
+
+
+<script>
+	const filterDropdown = document.querySelector("#purpose-filter");
+	const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+	filterDropdown?.addEventListener("change", (event) => {
+		if (!(event.target instanceof HTMLSelectElement)) {
+			return;
+		}
+
+		const selectedPurpose = event.target?.value;
+
+		portfolioItems.forEach((item) => {
+			if (!(item instanceof HTMLElement)) {
+				return;
+			}
+
+			const itemPurpose = item.getAttribute("data-purpose");
+
+			if (selectedPurpose === "all" || itemPurpose === selectedPurpose) {
+				item.style.display = "initial";
+			} else {
+				item.style.display = "none";
+			}
+		});
+	});
+</script>
