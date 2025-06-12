@@ -16,6 +16,6 @@ links: [
 
 An TypeScript-based offline-first web app for voyage reporting on maritime vessels, created for [ClearVoyage](/blog/clearvoyage-vms) as part of my bachelor's thesis. The app was designed to replace spreadsheet-based and document-based reports that crew would fill out numerous times a day.
 
-A key feature of the app, and therefore its architecture, was the ability to collect and generate a diverse set of reports, based on customer needs. The frontend therefore used a custom system to build forms dynamically in a data-driven manner, while the backend used a [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)-inspired structure to ensure clean separation of concerns.
+A key feature of the app, and therefore its architecture, was the ability to collect and generate a diverse set of reports, based on customer needs. The frontend therefore used a custom system to build forms dynamically in a data-driven manner, knowledge I would later find very useful at [LEGO Ideas](/portfolio/lego-ideas).
 
 Another interesting aspect of the project was the offline-first nature of the app. The app was designed to work seamlessly even when the vessel was out of range of any network, and would automatically sync data with the backend once a connection was re-established. This was achieved using a custom solution based on [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) and [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API).
