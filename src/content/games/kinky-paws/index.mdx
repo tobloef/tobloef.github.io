@@ -1,0 +1,29 @@
+---
+title: "Kinky Paws (2024)"
+subtitle: "2-player co-op dating game (Nordic Game Jam)."
+cover: "./cover.png"
+coverAlt: ""
+coverIsSmall: true
+date: 2024-04-01
+tech: [
+  { name: "unity", image: "../../../components/tech-icons/unity.svg" }
+]
+purpose: "personal"
+links: []
+---
+
+import { Image } from 'astro:assets';
+import fullGraph from './cover.png';
+
+<p className="de-emphasize">Work cooperatively with your fellow player as you both take control of cute animals going on dates, trying to figure out which kinks they have in common.</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={fullGraph} alt="" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize">Example of the game's art style. All sprites are made entirely of characters from the original IBM PC.</span>
+</div>
+
+This game is what I currently work on in my spare time. It's not necessarily meant to be a traditional game, but rather my own digital garden, a space for exploring various technical topics I find interesting. It's all written from scratch in TypeScript, using my own WebGPU renderer (<a href="/portfolio/rhizome">Rhizome</a>), my own hot-reloading build system (<a href="/portfolio/bikbok">Bikbok</a>, <a href="/portfolio/hot-reload">Hot Reload</a>), my own graph-based component system (<a href="/portfolio/crockpot">Crockpot</a>), and various other layers I'm building on top of browser APIs such Web Audio, WebTransport, and IndexedDB.
+
+From a technical point of view, the project is focused on high-performance TypeScript code, taking into account things such as CPU cache locality, minimizing garbage collection, being nice to the JIT compiler, and so on. You might describe the code as very C-like, which I would take a complement.
+
+Gameplay-wise, I'm exploring ideas around AI agents (in the traditional non-machine learning sense) having their own individual mental models of the world and interacting with each other in a highly systems-driven environments. The papers and research I'm reading is split pretty evenly been zoology and AI, which has been great fun.
