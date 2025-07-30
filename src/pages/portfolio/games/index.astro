@@ -1,0 +1,227 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { getItemWithImages } from "../../../scripts/getItemWithImages.js";
+import BaseLayout from "../../../components/BaseLayout.astro";
+import Navigation from "../../../components/Navigation.astro";
+
+const portfolioCollection = await getCollection("portfolio");
+const portfolioCollectionWithImages = await Promise.all(portfolioCollection.map(getItemWithImages));
+
+const gamesCollection = await getCollection("games");
+const gamesCollectionWithImages = await Promise.all(gamesCollection.map(getItemWithImages));
+
+const normalItems = portfolioCollectionWithImages
+	.toSorted((a, b) => b.data.date - a.data.date)
+	.filter((item) => item.data.hidden !== true && item.data.gamedev);
+
+const gameItems = gamesCollectionWithImages
+	.toSorted((a, b) => b.data.date - a.data.date)
+	.filter((item) => item.data.hidden !== true);
+---
+
+<BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
+	<Fragment slot="head">
+		<title>Portfolio // Tobias Løfgren</title>
+		{
+			normalItems.map((item) => (
+				<link
+					rel="prefetch"
+					href={ item.data.cover }
+					as="image"
+				/>
+			))
+		}
+	</Fragment>
+	<Navigation/>
+	<div class="header">
+		<p class="callout">
+			You're viewing the hidden gamedev version of my portfolio. Cool! <br /> You can view the normal version of the portfolio <a href="/portfolio">here</a>, which has more of my professional web development work.
+		</p>
+		<h1>Game-adjacent</h1>
+	</div>
+	<div class="container" id="portfolio-items">
+		{ normalItems.map((item) => (
+			<a
+				href={ `/portfolio/${ item.id }` }
+				class="link no-accent portfolio-item"
+				data-astro-prefetch="viewport"
+				data-purpose={ item.data.purpose }
+			>
+				<div class="card">
+					<img
+						class="thumbnail"
+						src={ item.data.thumbnail }
+						alt={ item.data.title }
+						style={ `view-transition-name: ${ item.id }-cover-image;` }
+					/>
+					<p class="title">
+						{ item.data.title } ({ item.data.date.getFullYear() })
+					</p>
+					<p class="subtitle">
+						{ item.data.subtitle }
+					</p>
+					<div class="tech-icons">
+						{ item.data.tech.map((tech) => (
+							<Image
+								src={ tech.image }
+								alt={ `${ tech.name } icon` }
+							/>
+						)) }
+					</div>
+				</div>
+			</a>
+		)) }
+	</div>
+	<hr/>
+	<div class="header">
+		<h1>Games</h1>
+	</div>
+	<div class="container" id="game-items">
+		{ gameItems.map((item) => (
+			<a
+				href={ `/portfolio/games/${ item.id }` }
+				class="link no-accent portfolio-item"
+				data-astro-prefetch="viewport"
+				data-purpose={ item.data.purpose }
+			>
+				<div class="card">
+					<img
+						class="thumbnail"
+						src={ item.data.thumbnail }
+						alt={ item.data.title }
+						style={ `view-transition-name: ${ item.id }-cover-image;` }
+					/>
+					<p class="title">
+						{ item.data.title } ({ item.data.date.getFullYear() })
+					</p>
+					<p class="subtitle">
+						{ item.data.subtitle }
+					</p>
+					<div class="tech-icons">
+						{ item.data.tech.map((tech) => (
+							<Image
+								src={ tech.image }
+								alt={ `${ tech.name } icon` }
+							/>
+						)) }
+					</div>
+				</div>
+			</a>
+		)) }
+	</div>
+</BaseLayout>
+
+
+<style>
+  @view-transition {
+    navigation: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1.5em 0 0.5em 0;
+  }
+
+  h1 {
+		line-height: 1em;
+    margin-bottom: 0;
+  }
+
+  .filter-dropdown {
+    padding: 0.35em 0.5em;
+    border: 2px solid var(--text);
+    border-radius: 5px;
+    background-color: var(--background);
+    color: var(--text);
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 2px 1px 5px var(--shadow);
+  }
+
+  .filter-dropdown:hover {
+    border-color: var(--accent);
+  }
+
+  .filter-dropdown:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .container {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-gap: 2em;
+    align-content: start;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    position: relative;
+  }
+
+  .card .thumbnail {
+    margin: 0 0 0.5em 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow);
+    transition: 0.3s ease-in-out;
+  }
+
+  .card .title {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .card .subtitle {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  .card .link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card .tech-icons {
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    right: 0.8em;
+    top: 0.8em;
+  }
+
+  .card .tech-icons img {
+    margin: 0 0 0 0.5em;
+    height: 2em;
+    width: 2em;
+    filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 1));
+  }
+
+  hr {
+    width: 100%;
+  }
+
+	.callout {
+		background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+		padding: 1em;
+		border-radius: 5px;
+		width: 100%;
+		text-align: center;
+	}
+</style>

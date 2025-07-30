@@ -1,0 +1,31 @@
+---
+title: "Kinky Paws"
+subtitle: "2-player co-op dating game (Nordic Game Jam)."
+cover: "./cover.png"
+coverAlt: ""
+coverIsSmall: true
+date: 2024-04-01
+tech: [
+  { name: "unity", image: "../../../components/tech-icons/unity.svg" }
+]
+purpose: "personal"
+links: []
+---
+
+import { Image } from 'astro:assets';
+import cover from './kinky_paws.png';
+
+<p className="de-emphasize">Work cooperatively with your fellow player as you both take control of cute animals going on dates, trying to figure out which kinks they have in common.</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		You take turns either speaking lines based on vague prompts or reacting to those lines,<br/> trying to see which of three kinks your character has in common with the other player.
+	</span>
+</div>
+
+I had a lot of fun making this Unity game with four other people during the 2024 Nordic Game Jam. While not as technically ambitious as some of the other jams games I've participated in, it's for sure the best looking one! It was great working with actual artists, not to mention the lovely romantic music we managed to write and record.
+
+As a co-op experience, it ended up being a little high-concept (read: confusing). In classic game jame fashion, we didn't get to playtest it as much as we would have liked, which showed from a design point of view. If given the chance, I would have loved to revisit the tutorialization, as well as adding a kid-friendly mode.
+
+See more on <a href="https://dj-dave.itch.io/kinky-paws">Itch.io</a>.

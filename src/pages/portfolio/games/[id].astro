@@ -1,0 +1,95 @@
+---
+import {
+	getCollection,
+	render,
+} from "astro:content";
+import BaseLayout from "../../../components/BaseLayout.astro";
+import Navigation from "../../../components/Navigation.astro";
+import { getItemWithImages } from "../../../scripts/getItemWithImages.js";
+
+export async function getStaticPaths() {
+	const portfolioItems = await getCollection("games");
+
+	return await Promise.all(portfolioItems.map(async (item) => {
+		const itemWithImage = await getItemWithImages(item);
+		return {
+			params: { id: itemWithImage.id },
+			props: { item: itemWithImage },
+		};
+	}));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<BaseLayout styleOverrides={ { maxWidth: "100ch" } }>
+	<Fragment slot="head">
+		<title>Portfolio // Tobias Løfgren</title>
+		<meta name="robots" content="noindex"/>
+	</Fragment>
+	<Navigation
+		backUrl="/portfolio/games"
+		backTitle="Back to portfolio"
+	/>
+	<div class="container">
+		<div class="text">
+			<h1 class="title">
+				{ item.data.title } ({ item.data.date.getFullYear() })
+			</h1>
+			<Content/>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+  @view-transition {
+    navigation: none;
+  }
+
+  .container {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    margin: 0 0 1em 0;
+    max-height: 20em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow);
+  }
+
+  .cover.small {
+    max-height: 15em;
+  }
+
+  .byline {
+    margin-top: 0;
+  }
+
+	.links {
+		margin-left: 0.5em;
+	}
+
+	.links :not(:last-child) {
+		margin-right: 1em;
+	}
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .subtitle {
+    margin-top: 0;
+    opacity: 0.7;
+    font-style: italic;
+  }
+</style>

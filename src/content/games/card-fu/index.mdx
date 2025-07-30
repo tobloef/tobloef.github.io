@@ -1,0 +1,31 @@
+---
+title: "Card Fu"
+subtitle: "Networked multiplayer card game on the web."
+cover: "./cover.png"
+coverAlt: ""
+coverIsSmall: true
+date: 2016-02-01
+tech: [
+  { name: "javascript", image: "../../../components/tech-icons/javascript.svg" }
+]
+purpose: "personal"
+links: []
+---
+
+import { Image } from 'astro:assets';
+import cover from './cover.png';
+
+<p className="de-emphasize">Online PvP card game built on web technologies.</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		Players would try to beat each other's cards in an advanced version of rock-paper-scissors.
+	</span>
+</div>
+
+A clone of Club Penguin's [Card-Jitsu](https://www.cplegacy.com/cardjitsu), this game was made from scratch using web technologies such as [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) for graphics and [Node.js](https://nodejs.org/) with [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) for multiplayer.
+
+Essentially an advanced form of rock-paper-scissors, but with a unique scoring mechanic, players would try to predict which cards their opponent would play. To win, you had to win with sets of cards with either identical or all-unique attributes, which meant you had an fighting chance of guessing which cards your opponents would play, making it a fair bit more interesting than normal rock-paper-scissors.
+
+I think this project is where I first noticed the power of the web as a platform for games. You get a lot of capabilities for free, and the barrier to entry for players is extremely low. The game's size coming in at under a megabyte, time-to-play is virtually instant, which was a stark contrast to for example Unity's WebGL exports (especially at the time).

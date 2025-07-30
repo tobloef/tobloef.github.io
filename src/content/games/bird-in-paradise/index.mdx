@@ -1,0 +1,38 @@
+---
+title: "Bird in Paradise"
+subtitle: "Master momentum to sacrifice villagers before it's too late (Ludum Dare)."
+cover: "./cover.jpeg"
+coverAlt: ""
+coverIsSmall: true
+date: 2018-12-01
+tech: [
+  { name: "unity", image: "../../../components/tech-icons/unity.svg" }
+]
+purpose: "personal"
+links: []
+---
+
+import { Image } from 'astro:assets';
+import cover from './cover.jpeg';
+
+<p className="de-emphasize">Master momentum to sacrifice villagers before the island explodes!</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		TODO: GET A BETTER COVER IMAGE.
+	</span>
+</div>
+
+Made with two other people for the 2018 Ludum Dare game jam, this game has you take control of a bird trying to pick up and throw villagers into an active volcano before the island explodes. Made in Unity, I was responsible for the character controller and scoring systems and I think we ended up in an interesting design space, where you had to utilize momentum and loop through the sky to maximize your pace and points.
+
+While the game got fine scores during the jam, it wasn't until after the jam that we found the true fun of the game. The movement mechanics ended up lending themselves well to mastery-driven gameplay such as difficult challenges and speedrunning. As we tweaked the game for this purpose, a small group of friends got really into this aspect, sharing strategies and scores online.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+<div style="display: flex; justify-content: center; margin: 1em 0">
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/_WFx9qkayqU?si=KUF7YuS2m3aBKjnh&vq=hd1080" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+  <span className="de-emphasize" style="text-align: center">
+		One of the shorter speedruns, where a precise glitch is used to score double points for sacrificing a villager.<br />Not terrible representative of real gameplay.
+	</span>
+</div>
