@@ -1,5 +1,5 @@
 ---
-title: "Project Thunderbird (2023)"
+title: "Project Thunderbird"
 subtitle: "LEGO-themed rail shooter with novel controller hardware (Nordic Game Jam)."
 cover: "./cover.png"
 coverAlt: ""
@@ -12,9 +12,13 @@ purpose: "personal"
 links: []
 ---
 
+import { Image } from 'astro:assets';
+import cover from './screenshot.png';
+
 <p className="de-emphasize">Fly through the LEGO galaxy in this on-rails shoot 'em up, using your motion-controlled spaceship to blast away enemies.</p>
+
 <div style="display: flex; justify-content: center; margin: 1em 0">
-	<iframe width="800" height="450" src="https://www.youtube.com/embed/8N6lLRurCZ4?si=6Tq9Rzf8yspUFbAu" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/8N6lLRurCZ4?si=6Tq9Rzf8yspUFbAu&vq=hd1080" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 Made with five other people as part of the Nordic Game Jam 2024, we knew we wanted to do something with a physical hardware component. We ended trying to capture that feeling of running around with a toy spaceship in your hand, going "pew pew pew".
@@ -22,3 +26,10 @@ Made with five other people as part of the Nordic Game Jam 2024, we knew we want
 The game is made in Unity and the controller was built with LEGO MINDSTORMS. I was responsible for the hardware integration, and having to reinvent <i>somewhat</i> accurate motion controls with just an accelerometer was a really fun challenge.
 
 See more on <a href="https://emanuel-perpals.itch.io/project-thunderbird">Itch.io</a>.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		Screenshot of the game. We had a lot of fun making the virtual ship model match the physical one!
+	</span>
+</div>

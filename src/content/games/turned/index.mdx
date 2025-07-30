@@ -1,5 +1,5 @@
 ---
-title: "Turned (2014)"
+title: "Turned"
 subtitle: "Zombie survival minigame as a Minecraft server mod."
 cover: "./cover.png"
 coverAlt: ""
@@ -13,3 +13,22 @@ purpose: "personal"
 links: []
 ---
 
+import { Image } from 'astro:assets';
+import cover from './cover.png';
+
+<p className="de-emphasize">Asymmetric multiplayer zombie survival minigame, implemented as a Minecraft server mod.</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		Unfortunately, no screenshots of the project has survived to this day, so the above is just for flavor.
+	</span>
+</div>
+
+Inspired by Call of Duty's [Turned game-mode](https://callofduty.fandom.com/wiki/Turned), this minigame was the first thing I worked on in a team. I did all the programming, while the talented group of builders at [Sunfury](https://www.planetminecraft.com/projects/tag/sunfury/?order=order_popularity) did all the level design.
+
+Players would be split up into two groups, Zombies and Survivors. Equipped with insta-killing weapons, the Survivors would have to keep the Zombies at bay until a timer ran out. Defeated players would also turn into Zombies, who would then win by wiping out the remaining survivors. This created a really fun difficulty curve, as the dwindling Survivors would get increasingly overwhelmed by the horde of Zombies (though design credit of course goes to the original game this was based on).
+
+Tech-wise, this was all implemented in Java as a server plugin for the "Bukkit" Minecraft server. Because server plugins (at the time) couldn't introduce any new UI, model or animation elements, I had to be creative about repurposing the game's existing elements. A boss health bar could be tapped into and used as a loading bar, chat messages could be used to display ASCII art and so on.
+
+Looking back, I'm quite surprised I finished the project. It's thousands of lines of very ugly Java code, but I think it set my down the path I am still one today, so for that I am grateful.

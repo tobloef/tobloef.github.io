@@ -1,5 +1,5 @@
 ---
-title: "Take the Plunge (2022)"
+title: "Take the Plunge"
 subtitle: "3D platformer prototype with a really satisfying character controller."
 cover: "./cover.png"
 coverAlt: ""
@@ -17,12 +17,14 @@ import trailer from './plunger.mov';
 <p className="de-emphasize">Work cooperatively with your fellow player as you both take control of cute animals going on dates, trying to figure out which kinks they have in common.</p>
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
-	<video alt="Clips from the prtotype" height="420px" width="420px" style="margin-bottom: 1em; object-fit: cover;" controls>
-		<source src={trailer} type="video/mp4" />
-	</video>
-	<span className="de-emphasize" style="text-align: center">Small collection of clips showcasing the character controller.</span>
+  <div style="display: flex; justify-content: center; margin: 1em 0">
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/P3IhAMnhMxQ?si=5t5Spuyxr31rMy_v&vq=hd1080" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+	<span className="de-emphasize" style="text-align: center">Small collection of clips showcasing the character controller. Proper levels were later added.</span>
 </div>
 
 This prototype started out as me wanting to experiment with mesh deformation shaders, so I came up with this idea of a bendy plunger flopping around a level. After proving the initial tech, I focused on making the character controller of the plunger feel great, adding various visuals and sound effects to juice up the experience.
 
-In the end I think it ended up being really satisfying just flinging the plunger around, even in very simple debug environments. That sentiment seemed to be shared by others, as clips of the prototype went viral on TikTok with about 2 million views. I also got people to try the prototype (and around 20 minutes of frustratingly difficult levels) at a local LAN party, which was good fun.
+In the end I think it ended up being really satisfying just flinging the plunger around, even in very simple debug environments. That sentiment seemed to be shared by others, as clips of the prototype went somewhat viral on TikTok with about 2 million views. I also got people to try the prototype (and around 20 minutes of frustratingly difficult levels) IRL at a local LAN party, which was good fun.
+
+Seeing the popularity of rage games like Getting Over It and Only Up, I've been tempted to go back to this prototype. The sound design and wigglyness of the Plunger is surprisingly compelling when you play it, and it works great on mobile. That said, the controls could use a revamp for when the plunger is upside down (which is a fun element of gameplay) and making enough level content for it to be interesting would be relatively time consuming.

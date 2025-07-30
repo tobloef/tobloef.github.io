@@ -41,7 +41,7 @@ const gameItems = gamesCollectionWithImages
 			<br>
 			You can view the normal version of the portfolio <a href="/portfolio">here</a>, which is more focused on full-stack web development.
 		</p>
-		<h1>Non-games</h1>
+		<h1>Game-adjacent</h1>
 	</div>
 	<div class="container" id="portfolio-items">
 		{ normalItems.map((item) => (
@@ -59,7 +59,7 @@ const gameItems = gamesCollectionWithImages
 						style={ `view-transition-name: ${ item.id }-cover-image;` }
 					/>
 					<p class="title">
-						{ item.data.title }
+						{ item.data.title } ({ item.data.date.getFullYear() })
 					</p>
 					<p class="subtitle">
 						{ item.data.subtitle }
@@ -96,7 +96,7 @@ const gameItems = gamesCollectionWithImages
 						style={ `view-transition-name: ${ item.id }-cover-image;` }
 					/>
 					<p class="title">
-						{ item.data.title }
+						{ item.data.title } ({ item.data.date.getFullYear() })
 					</p>
 					<p class="subtitle">
 						{ item.data.subtitle }

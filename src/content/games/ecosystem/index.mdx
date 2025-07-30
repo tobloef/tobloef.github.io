@@ -1,6 +1,6 @@
 ---
-title: "Ecosystem Game (In-development)"
-subtitle: "Master a simulated ecosystem before the planet is terraformed. My current project."
+title: "My current project"
+subtitle: "Master a simulated ecosystem before the planet is terraformed."
 cover: "./cover.png"
 coverAlt: ""
 coverIsSmall: false
@@ -14,12 +14,12 @@ links: []
 ---
 
 import { Image } from 'astro:assets';
-import fullGraph from './cover.png';
+import cover from './cover.png';
 
 <p className="de-emphasize">Explorer and master an alien ecosystem, documenting each lifeform before terraformers can arrive and ruin the planet's ecosystem. Inspired by the living world of Rain World and the system-driven philosophy of old school roguelikes.</p>
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
-  <Image src={fullGraph} alt="" width="750rem" style="margin-bottom: 1em" />
+  <Image src={cover} alt="" width="750rem" style="margin-bottom: 1em" />
   <span className="de-emphasize" style="text-align: center">Example of the game's art style. All sprites are made entirely of text characters from the original IBM PC.</span>
 </div>
 
@@ -29,4 +29,4 @@ From a technical point of view, the project is focused on high-performance TypeS
 
 Gameplay-wise, I'm exploring ideas around AI agents (in the traditional non-machine learning sense) having their own individual mental models of the world and interacting with each other in a highly systems-driven environments. The papers and research I'm reading is split pretty evenly been zoology and AI, which has been great fun.
 
-I've also been working on some really cool developer tooling around being able to replay sessions of the game, which is a huge boon to debugging. A playtester can simply hit a button to upload the save and then I can automatically reproduce whatever bug they encountered.
+I've also been working on some really cool developer tooling around being able to deterministically replay sessions of the game, which is a huge boon to debugging. A playtester can simply hit a button to upload the save and then I can automatically reproduce whatever bug they encountered.

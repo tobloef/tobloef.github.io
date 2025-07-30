@@ -35,7 +35,7 @@ const { Content } = await render(item);
 	<div class="container">
 		<div class="text">
 			<h1 class="title">
-				{ item.data.title }
+				{ item.data.title } ({ item.data.date.getFullYear() })
 			</h1>
 			<Content/>
 		</div>

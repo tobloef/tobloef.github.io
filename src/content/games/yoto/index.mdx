@@ -1,5 +1,5 @@
 ---
-title: "You Only Tap Once (2015)"
+title: "You Only Tap Once"
 subtitle: "Casual mobile game with deliberate scope. My first publicly released game."
 cover: "./cover.png"
 coverAlt: ""
@@ -12,7 +12,22 @@ purpose: "personal"
 links: []
 ---
 
-Lorem ipsum.
+import { Image } from 'astro:assets';
+import cover from './cover.png';
 
-PICO-8 Demake: https://www.lexaloffle.com/bbs/?pid=115719
-GitHub: https://github.com/tobloef/you-only-tap-once
+<p className="de-emphasize">Place a growing circle anywhere on the screen in order to trigger as big a chain reaction as possible.</p>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 1em 0">
+  <Image src={cover} alt="Screenshot from the game" width="750rem" style="margin-bottom: 1em" />
+  <span className="de-emphasize" style="text-align: center">
+		Visually, the game was not particularly interesting, perhaps unless you <b>really</b> liked dodger blue.
+	</span>
+</div>
+
+The impetus for this game came out of a frustration with never releasing any of the game projects I was working on at the time. I therefore deliberately chose the smallest gameplay scope I could think of, so I could focus on learning about the processing of publishing and integrating with the Google Play store for microtransactions, as well as developing Android apps with [LibGDX](https://libgdx.com/) in general.
+
+Essentially, small dots would bounce around the screen and you could place a single new "activated" dot wherever you wanted. Activated dots would be able to collide with and activate normal dots. For a second or two, activated dots would grow by some factors, until shrinking and disappearing. So the game loop became about predicting where clusters of dots would bounce to, then placing your activated dot and watching the chain reaction unfold.
+
+While very simple, the game had a surprisingly hypnotic appeal, due to its undulating chain reactions and satisfying "pop-pop" sounds, akin to stepping on a large patch of bubble wrap.
+
+Looking back on the project today, it was a great lesson in down-scoping, as well as some of the minutia that goes into preparing a game for release. Proper menus and UI, store integrations, difficulty tuning, and so on.
