@@ -2,7 +2,7 @@
 interface Props {
 	styleOverrides?: {
 		maxWidth?: string;
-	}
+	};
 }
 
 const props = Astro.props;
@@ -14,7 +14,10 @@ const props = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Software engineer by day, software engineer by night also.">
+		<meta
+			name="description"
+			content="Software engineer by day, software engineer by night also."
+		/>
 		<slot name="head" />
 		<title>Tobias Løfgren</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -28,12 +31,14 @@ const props = Astro.props;
 
 <style is:global define:vars={{ "max-width": props.styleOverrides?.maxWidth }}>
 	:root {
+		/* If you add more variables, remember to update ThemeSwitcher.astro as well. */
 		--light-text: hsl(43, 26%, 11%);
 		--light-background: hsl(36, 49%, 87%);
 		--light-primary: hsl(31, 100%, 26%);
 		--light-secondary: hsl(32, 100%, 17%);
 		--light-accent: hsl(38, 100%, 45%);
 		--light-shadow: rgba(0, 0, 0, 0.5);
+		--light-code-background: hsl(36, 49%, 80%);
 
 		--dark-text: hsl(36, 49%, 83%);
 		--dark-background: hsl(30, 6%, 7%);
@@ -41,6 +46,7 @@ const props = Astro.props;
 		--dark-secondary: hsl(32, 100%, 83%);
 		--dark-accent: hsl(38, 100%, 45%);
 		--dark-shadow: rgba(0, 0, 0, 1);
+		--dark-code-background: hsl(30, 30%, 20%);
 
 		--text: var(--light-text);
 		--background: var(--light-background);
@@ -48,6 +54,7 @@ const props = Astro.props;
 		--secondary: var(--light-secondary);
 		--accent: var(--light-accent);
 		--shadow: var(--light-shadow);
+		--code-background: var(--light-code-background);
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -58,6 +65,7 @@ const props = Astro.props;
 			--secondary: var(--dark-secondary);
 			--accent: var(--dark-accent);
 			--shadow: var(--dark-shadow);
+			--code-background: var(--dark-code-background);
 		}
 	}
 
@@ -100,16 +108,20 @@ const props = Astro.props;
 	}
 
 	a:not(.no-accent) {
-    background-position-y: -0%;
-    background-image: linear-gradient(180deg, transparent 50%, var(--accent) 50%);
-    transition: all 0.1s ease;
-    background-size: auto 185%;
+		background-position-y: -0%;
+		background-image: linear-gradient(
+			180deg,
+			transparent 50%,
+			var(--accent) 50%
+		);
+		transition: all 0.1s ease;
+		background-size: auto 185%;
 	}
 
 	@media (prefers-color-scheme: dark) {
 		a {
-			background-size: auto 190%
-		};
+			background-size: auto 190%;
+		}
 	}
 
 	a:hover {
@@ -136,7 +148,7 @@ const props = Astro.props;
 	h4 + p,
 	h2 + ul,
 	h3 + ul,
-	h4 + ul{
+	h4 + ul {
 		margin-top: 0;
 	}
 
@@ -154,7 +166,12 @@ const props = Astro.props;
 	}
 
 	code {
-		line-break: anywhere;
+		background-color: var(--code-background);
+		padding: 0.1em 0.3em;
+	}
+
+	blockquote code {
+		background-color: var(--primary);
 	}
 
 	li:not(:last-child) {
@@ -162,6 +179,21 @@ const props = Astro.props;
 	}
 
 	hr {
-		border-color: var(--text);
+		border-color: var(--code-background);
+		width: 100%;
+	}
+
+	a[data-footnote-ref]::before {
+		content: "[";
+	}
+
+	a[data-footnote-ref]::after {
+		content: "]";
+	}
+
+	a[data-footnote-ref] {
+		/* your custom styles */
+		text-decoration: none;
+		color: var(--accent);
 	}
 </style>
